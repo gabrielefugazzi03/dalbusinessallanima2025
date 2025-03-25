@@ -1,0 +1,231 @@
+[
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA1",
+        "Nome_Comunità": "Comunità Pastorale 1",
+        "Moderatore": "don Ezio Molinari",
+        "mail_moderatore": "ezio.molinari@me.com"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA2",
+        "Nome_Comunità": "Comunità Pastorale 2",
+        "Moderatore": "don Paolo Mascilongo"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA3",
+        "Nome_Comunità": "Comunità Pastorale 3",
+        "Moderatore": "don Pietro Cesena"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA4",
+        "Nome_Comunità": "Comunità Pastorale 4",
+        "Moderatore": "don Paolo Cignatta"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA5",
+        "Nome_Comunità": "Comunità Pastorale 5",
+        "Moderatore": "don Giuseppe Lusignani"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA6",
+        "Nome_Comunità": "Comunità Pastorale 6",
+        "Moderatore": "don Giuseppe Tosca"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA7",
+        "Nome_Comunità": "Comunità Pastorale 7",
+        "Moderatore": "don Federico Tagliaferri"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA8",
+        "Nome_Comunità": "Comunità Pastorale 8",
+        "Moderatore": "don Pier Giovanni Cacchioli"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA9",
+        "Nome_Comunità": "Comunità Pastorale 9",
+        "Moderatore": "don Silvio Pasquali"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA1",
+        "Nome_Comunità": "Comunità Pastorale 1",
+        "Moderatore": "mons. Giuseppe Illica"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA2",
+        "Nome_Comunità": "Comunità Pastorale 2",
+        "Moderatore": "don Paolino Chiapparoli"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA3",
+        "Nome_Comunità": "Comunità Pastorale 3",
+        "Moderatore": "don Franco Cattivelli"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA4",
+        "Nome_Comunità": "Comunità Pastorale 4",
+        "Moderatore": "don Umberto Ciullo"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "Nome_Comunità": "Comunità Pastorale 5",
+        "Moderatore": "don Roberto Isola"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA6",
+        "Nome_Comunità": "Comunità Pastorale 6",
+        "Moderatore": "don Domenico Pascariello"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA7",
+        "Nome_Comunità": "Comunità Pastorale 7",
+        "Moderatore": "don Giuseppe Rigolli"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA8",
+        "Nome_Comunità": "Comunità Pastorale 8",
+        "Moderatore": "don Lodovico Groppi"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "Nome_Comunità": "Comunità Pastorale 9",
+        "Moderatore": "don Giovanni Cigala"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA1",
+        "Nome_Comunità": "Comunità Pastorale 1",
+        "Moderatore": "don Fausto Arrisi"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA2",
+        "Nome_Comunità": "Comunità Pastorale 2",
+        "Moderatore": "don Mauro Tramelli"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA3",
+        "Nome_Comunità": "Comunità Pastorale 3",
+        "Moderatore": "don Claudio Carbeni"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "Nome_Comunità": "Comunità Pastorale 4",
+        "Moderatore": "don Alphonse Lukoki"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA5",
+        "Nome_Comunità": "Comunità Pastorale 5",
+        "Moderatore": "don Angelo Sesenna"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "Nome_Comunità": "Comunità Pastorale 6",
+        "Moderatore": "don Stefano Garilli"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA1",
+        "Nome_Comunità": "Comunità Pastorale 1",
+        "Moderatore": "don Fabio Galli"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "Nome_Comunità": "Comunità Pastorale 2",
+        "Moderatore": "don Fabrizio Bonelli"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "Nome_Comunità": "Comunità Pastorale 3",
+        "Moderatore": "don Valerio Picchioni"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA1",
+        "Nome_Comunità": "Comunità Pastorale 1",
+        "Moderatore": "don Andrea Campisi"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "Nome_Comunità": "Comunità Pastorale 2",
+        "Moderatore": "don Giovanni Bergomi"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "Nome_Comunità": "Comunità Pastorale 3",
+        "Moderatore": "mons. Mario Dacrema"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA4",
+        "Nome_Comunità": "Comunità Pastorale 4",
+        "Moderatore": ""
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "Nome_Comunità": "Comunità Pastorale 1",
+        "Moderatore": "mons. Aldo Maggi"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA2",
+        "Nome_Comunità": "Comunità Pastorale 2",
+        "Moderatore": "don Marco Forni"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "Nome_Comunità": "Comunità Pastorale 3",
+        "Moderatore": "don Giacomo Ferraglio"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "Nome_Comunità": "Comunità Pastorale 4",
+        "Moderatore": "don Ferdinando Cherubin"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "Nome_Comunità": "Comunità Pastorale 1",
+        "Moderatore": "mons. Lino Ferrari"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "Nome_Comunità": "Comunità Pastorale 2",
+        "Moderatore": "don Angelo Busi"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "Nome_Comunità": "Comunità Pastorale 3",
+        "Moderatore": "don Mario Cappelletti"
+    }
+]

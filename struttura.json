@@ -1,0 +1,1868 @@
+{
+  "allocated" : "",
+
+  "studente_compilatore" : {
+
+    "ordinamento": "0",
+    "readOnly": false,
+    "visible" : true,
+    "input_type": "text",
+    "label": "Studente UNICATT Compilatore:",
+    "value": ""
+
+  },
+
+  "commenti_revisore" : "",
+
+  "questionario_id": {
+    "ordinamento": "1",
+    "readOnly": true,
+    "input_type": "text",
+    "label": "ID Questionario",
+    "value": ""
+  },
+  
+  "status_record": {
+    
+    "input_type": "radio",
+    "visible": false,
+    "label": "Stato Questionario",
+    "options": ["inviato", "da verificare", "respinto", "accettato"],
+    "value": "da verificare"
+  },
+  "datatime_creazione": {
+    "ordinamento": "2",
+    "readOnly": true,
+    "visible": false,
+    "input_type": "datetime-local",
+    "label": "Data e Ora Creazione",
+    "value": ""
+  },
+  "datatime_ultima_modifica": {
+    "ordinamento": "3",
+    "readOnly": true,
+    "visible": false,
+    "input_type": "datetime-local",
+    "label": "Data e Ora Ultima Modifica",
+    "value": ""
+  },
+
+  "informazioni_compilazione": {
+    "ordinamento": "4",
+    "label": "INFORMAZIONI DI COMPILAZIONE",
+
+    "diocesi": {
+      "ordinamento": "4.1",
+      "input_type": "text",
+      "readOnly": true,
+      "visible" : false,
+      "label": "Diocesi",
+      "value": "Diocesi di Piacenza–Bobbio"
+    },
+    "vicariato": {
+      "ordinamento": "4.2",
+      "input_type": "select",
+      "label": "Vicariato",
+      "source_file": "vicariato.json",
+      "value_field": "ID_Vicariato",
+      "label_field": "Nome_Vicariato",
+      "placeholder": "Seleziona un Vicariato...",
+      "value": ""
+    },
+    "comunità_pastorale": {
+      "ordinamento": "4.3",
+      "input_type": "select",
+      "label": "Comunità Pastorale",
+      "source_file": "comunita.json",
+      "value_field": "ID_Comunità",
+      "label_field": "Nome_Comunità",
+      "filter_field": "ID_Vicariato",
+      "placeholder": "Seleziona una Comunità Pastorale...",
+      "depends_on": "vicariato",
+      "value": ""
+    },
+    "parrocchie": {
+      "ordinamento": "4.4",
+      "input_type": "table",
+      "label": "Parrocchie della Comunità Pastorale",
+      "source_file": "parrocchie.json",
+      "depends_on": ["vicariato", "comunità_pastorale"],
+      "filter_fields": ["ID_Vicariato", "ID_Comunità"],
+      "readOnly": false,
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "columns": [
+        { "name": "ID_Parrocchia", "label": "Codice Parrocchia", "input_type": "text" },
+        { "name": "Nome_Parrocchia", "label": "Nome Parrocchia", "input_type": "text" }
+      ],
+      "rows": []
+    },
+    "moderatore": {
+      "ordinamento": "4.5",
+      "input_type": "text",
+      "label": "Moderatore Firmatario",
+      "source_file": "comunita.json",
+      "value_field": "Moderatore",
+      "depends_on": ["vicariato", "comunità_pastorale"],
+      "filter_fields": ["ID_Vicariato", "ID_Comunità"],
+      "readOnly": true,
+      "value": ""
+    }
+  },
+
+  "date_visita_pastorale": {
+    "label": "DATE PRINCIPALI DELLA VISITA PASTORALE",
+    "ordinamento": "5",
+
+    "data_inizio_visita": {
+      "ordinamento": "5.1",
+      "input_type": "date",
+      "label": "Data Inizio della visita",
+      "value": ""
+    },
+    "data_fine_visita": {
+      "ordinamento": "5.2",
+      "input_type": "date",
+      "label": "Data fine della visita",
+      "value": ""
+    },
+    "data_compilazione": {
+      "ordinamento": "5.3",
+      "input_type": "date",
+      "label": "Data di compilazione",
+      "value": ""
+    },
+
+    "data_consegna_curia": {
+      "ordinamento": "5.4",
+      "input_type": "date",
+      "label": "Data di consegna all’Ufficio Pastorale",
+      "value": ""
+    }
+  },
+
+  "dati_generali_comunità_pastorale": {
+    "label": "DATI GENERALI COMUNITÀ PASTORALE",
+    "ordinamento": "6",
+
+    "numero_abitanti_residenti": {
+      "ordinamento": "6.1",
+      "input_type": "range",
+      "label": "Numero di abitanti residenti:",
+      "range_min": 0,
+      "range_max": 100000,
+      "value": 1000
+    },
+    "bool_aumento_diminuzione_popolazione_decennio": {
+      "ordinamento": "6.2",
+      "input_type": "radio",
+      "label": "Nell’ultimo decennio la popolazione residente:",
+      "options": ["È aumentata", "È diminuita", "È rimasta invariata"],
+      "value": "È invariata"
+    },
+
+    "numero_migranti_territorio": {
+      "ordinamento": "6.3",
+      "input_type": "range",
+      "label": "Numero di migranti stimati presenti sul territorio di questa Comunità Pastorale:",
+      "range_min": 0,
+      "range_max": 100000,
+      "value": 1000
+    },
+
+    "bool_presenza_migranti_cattolici": {
+      "ordinamento": "6.4",
+      "input_type": "radio",
+      "label": "Sono presenti migranti cattolici?",
+      "options": ["Sì", "No"],
+      "value": "Sì"
+    },
+
+    "bool_presenza_luoghi_culto_cristiani_non_cattolici": {
+      "ordinamento": "6.5",
+      "input_type": "radio",
+      "label": "Sono presenti luoghi di culto di altre chiese o comunità cristiane non cattoliche?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+   
+"culti_chiese_cristiane_non_cattoliche": {
+      "ordinamento": "6.6",
+      "input_type": "table",
+      "label": "Se sì, quali?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "columns": [
+        { "name": "nome_culto", "label": "Nome Culto", "input_type": "text" },
+        { "descrizione": "descrizione_culto", "label": "Descrizione", "input_type": "text" }
+      ],
+      "rows": []
+    },
+
+"bool_presenza_luoghi_culto_non_cristiani": {
+      "ordinamento": "6.7",
+      "input_type": "radio",
+      "label": "Sono presenti luoghi di culto di altre religioni (islam, induismo, buddismo...)?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+   
+"culti_non_cristiani": {
+      "ordinamento": "6.8",
+      "input_type": "table",
+      "label": "Se sì, quali?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "columns": [
+        { "name": "nome_culto", "label": "Nome Culto", "input_type": "text" },
+        { "descrizione": "descrizione_culto", "label": "Descrizione", "input_type": "text" }
+      ],
+      "rows": []
+    },
+
+"bool_presenza_sette": {
+      "ordinamento": "6.9",
+      "input_type": "radio",
+      "label": "Sono presenti sedi di sette o movimenti religiosi alternativi?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+   
+"culti_settari": {
+      "ordinamento": "6.10",
+      "input_type": "table",
+      "label": "Se sì, quali?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "columns": [
+        { "name": "nome_culto", "label": "Nome Culto", "input_type": "text" },
+        { "descrizione": "descrizione_culto", "label": "Descrizione", "input_type": "text" }
+      ],
+      "rows": []
+    },
+
+    "bool_numero_battezzati_popolazione_decennio": {
+      "ordinamento": "6.11",
+      "input_type": "radio",
+      "label": "Negli ultimi 10 anni il numero dei battezzati è:",
+      "options": ["È aumentato", "È diminuito", "È rimasto invariato"],
+      "value": "È invariata"
+    },
+
+   "modifiche_suggerimenti": {
+      "ordinamento": "6.12",
+      "input_type": "textarea",
+      "label": "Ci sono delle modifiche (ad es. dei confini delle Comunità pastorali) che si ritengono opportune?",
+      "value": ""
+    },
+
+    "scuole_presenti": {
+      "ordinamento": "6.13",
+      "input_type": "checkbox",
+      "label": "Quali scuole sono presenti sul territorio?",
+      "options": [
+        "Scuola dell'Infanzia",
+        "Scuola Primaria",
+        "Scuola Media",
+        "Scuola Superiore",
+        "Università",
+        "Centro di Formazione Professionale"
+      ],
+      "value": []
+    }
+  },
+
+  "consiglio_comunità_pastorale": {
+    "label": "IL CONSIGLIO DI COMUNITÀ PASTORALE",
+    "ordinamento": "7",
+    "bool_costituzione_consiglio": {
+      "ordinamento": "7.1",
+      "input_type": "radio",
+      "label": "È stato costituito il Consiglio di Comunità Pastorale?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+    "data_costituzione": {
+      "ordinamento": "7.2",
+      "input_type": "date",
+      "label": "Data della costituzione",
+      "value": ""
+    },
+    "numero_componenti": {
+        "ordinamento": "7.3",
+        "input_type": "range",
+        "label": "Numero componenti",
+        "range_min": 1,
+        "range_max": 100,
+        "value": 10
+      },
+      "numero_componenti_eletti": {
+        "ordinamento": "7.4",
+        "input_type": "range",
+        "label": "Numero membri eletti",
+        "range_min": 0,
+        "range_max": 100,
+        "value": 5
+      },
+      "numero_componenti_scelti_moderatore": {
+        "ordinamento": "7.5",
+        "input_type": "range",
+        "label": "Numero membri scelti dal Moderatore",
+        "range_min": 0,
+        "range_max": 100,
+        "value": 5
+      },
+      "numero_incontri_anno_concluso": {
+        "ordinamento": "7.6",
+        "input_type": "range",
+        "label": "Numero di incontri nell’anno pastorale concluso",
+        "range_min": 0,
+        "range_max": 50,
+        "value": 5
+      }
+    
+  },
+
+  "koinonia": {
+    "label": "LA KOINONIA",
+    "ordinamento": "8",
+    "bool_presenza_koinonia": {
+      "ordinamento": "8.1",
+      "input_type": "radio",
+      "label": "È stata costituita?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+    "componenti": {
+      "ordinamento": "8.2",
+      "input_type": "table",
+      "label": "Da chi è composta la Koinonia?",
+      "columns": [
+        { "name": "nome", "input_type": "text", "label": "Nome" },
+        { "name": "cognome", "input_type": "text", "label": "Cognome" },
+        { "name": "servizio_svolto", "input_type": "text", "label": "Servizio Svolto" }
+      ],
+      "rows": []
+    },
+
+    "valutazioni_suggerimenti": {
+        "input_type": "textarea",
+        "label": "Eventuali valutazioni e suggerimenti circa il compito della koinonia.",
+        "ordinamento" : "8.3",
+        "value": ""
+      }
+  },
+
+  "ministero_diaconale": {
+    "label": "MINISTERO DIACONALE",
+    "ordinamento": "9",
+    "bool_presenza_diaconi": {
+      "ordinamento": "9.1",
+      "input_type": "radio",
+      "label": "Vi è la presenza di uno o più diaconi permanenti che svolgono servizio in Comunità pastorale?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+    "numero_diaconi": {
+      "ordinamento": "9.2",
+      "input_type": "number",
+      "label": "Se sì, indicare quanti:"
+    },
+
+   "tipo_pastorale_diaconi": {
+      "ordinamento": "9.3",
+      "input_type": "table",
+      "label": "Se sì, che tipo di collaborazione offrono alla pastorale?",
+      "columns": [
+        { "name": "livello", "input_type": "text", "label": "Livello Servizio" },
+        { "name": "numero", "input_type": "number", "label": "Numero Diaconi" },
+        { "name": "servizio", "input_type": "text", "label": "Servizio" },
+        { "name": "descrizione", "input_type": "text", "label": "Descrizione" }
+        
+      ],
+      "rows": []
+    },
+
+
+    "bool_presenza_lettera_vescovo": {
+      "ordinamento": "9.4",
+      "input_type": "radio",
+      "label": "Tale collaborazione è stata definita con lettera dell’Ordinario?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    }
+  },
+
+  "vita_consacrata": {
+    "label": "VITA CONSACRATA",
+    "ordinamento": "10",
+
+    "bool_presenza_religiosi": {
+      "ordinamento": "10.1",
+      "input_type": "radio",
+      "label": "Vi è presenza di religiosi/e in parrocchia?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+    "componenti": {
+      "ordinamento": "10.2",
+      "input_type": "table",
+      "label": "Se sì, compilare la tabella. Se esiste una convenzione tra parrocchia e Istituto, indicare la data di stipulazione della convenzione",
+      "columns": [
+        { "name": "nome_istituto", "input_type": "text", "label": "Nome Istituto" },
+        { "name": "numero_religiosi", "input_type": "number", "label": "Numero Religiosi" },
+        { "name": "carisma", "input_type": "text", "label": "Carisma" },
+        { "name": "collaborazione_pastorale", "input_type": "text", "label": "Collaborazione alla Pastorale Parrocchiale" },
+        { "name": "data_convenzione", "input_type": "date", "label": "Data Convenzione" }
+      ],
+      "rows": []
+    }
+  },
+
+  "dati_ambito_canonico_amministrativo": {
+    "label": "AMBITO CANONICO-AMMINISTRATIVO",
+    "ordinamento": "11",
+    "registri_parrocchiali": {
+      
+      "ordinamento": "11.1",
+      "input_type": "table",
+      "label": "Sono presenti i registri:",
+     "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],  
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia", "readOnly" : true},
+        { "name": "registro_battesimi", "input_type": "checkbox", "label": "Battesimi" },
+        { "name": "registro_cresime", "input_type": "checkbox", "label": "Cresime" },
+        { "name": "registro_matrimoni", "input_type": "checkbox", "label": "Matrimoni" },
+        { "name": "registro_entrate_uscite", "input_type": "checkbox", "label": "Entrate/Uscite" },
+        { "name": "registro_defunti", "input_type": "checkbox", "label": "Defunti" },
+        { "name": "registro_fondazioni_legati", "input_type": "checkbox", "label": "Fondazioni/Legati" },
+        { "name": "archiviazione_bilanci_parrocchiali", "input_type": "checkbox", "label": "Archiviazione Bilanci" }
+      ],
+      "rows": []
+    },
+    "archivi_parrocchiali": {
+      "label": "ARCHIVI PARROCCHIALI",
+      "ordinamento": "11.2",
+
+      
+      "condizioni_archivio_storico": {
+      "label": "Condizioni dell'Archivio Storico",
+      "ordinamento": "11.2.1",
+      
+      "bool_in_unica_sede_cpa_archivio_storico": {
+        "input_type": "checkbox",
+        "label": "In unica sede nella Cpa (Archivio Storico)?",
+        "ordinamento" : "11.2.1.1",
+        "value": false
+      },
+      "unica_sede_archivio_storico_indicare": {
+        "input_type": "text",
+        "label": "Indicare la sede Archivio Storico",
+        "ordinamento" : "11.2.1.2",
+        "value": ""
+      },
+      "bool_presente_presso_archivi_storici_diocesani": {
+        "input_type": "checkbox",
+        "label": "Presso gli Archivi storici diocesani (Archivio Storico)?",
+        "ordinamento" : "11.2.1.3",
+        "value": false
+      }   },
+      
+      "condizioni_archivio_corrente": {
+        "label": "Condizioni dell'Archivio Corrente",
+      "unica_sede_archivio_corrente_indicare": {
+        "input_type": "text",
+        "ordinamento" : "11.2.2.1",
+        "label": "Indicare la sede Archivio Corrente",
+        "value": ""
+      },
+      "bool_in_unica_sede_cpa_archivio_corrente": {
+        "input_type": "checkbox",
+        "ordinamento" : "11.2.2.2",
+        "label": "In unica sede nella Cpa (Archivio Corrente)?",
+        "value": false
+      }
+      
+    },
+
+      "componenti": {
+        "input_type": "table",
+        "label": "Stato di conservazione:",
+        "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+        "columns": [
+          {
+            "name": "Nome_Parrocchia",
+            "input_type": "text",
+            "label": "Parrocchia"
+          },
+          {
+            "name": "stato_archivio_corrente",
+            "input_type": "range",
+            "range_min": 0,
+            "range_max": 5,
+            "label": "Stato Archivio Corrente (1=Pessimo ... 5=Ottimo)",
+            "value": 3,
+            "range_labels": {
+              "0" : "Non Espresso",
+              "1": "Pessimo",
+              "2": "Non accettabile",
+              "3": "Accettabile",
+              "4": "Buono",
+              "5": "Ottimo"
+            }
+          },
+          {
+            "name": "stato_archivio_storico",
+            "input_type": "range",
+            "range_min": 0,
+            "range_max": 5,
+            "label": "Stato Archivio Storico (1=Pessimo ... 5=Ottimo)",
+            "value": 3,
+            "range_labels": {
+              "0" : "Non Espresso",
+              "1": "Pessimo",
+              "2": "Non accettabile",
+              "3": "Accettabile",
+              "4": "Buono",
+              "5": "Ottimo"
+            }
+          }
+        ],
+        "rows": []
+      }
+    },
+    "dati_economici_amministrativi_prospetto1": {
+      "label": "DATI ECONOMICI E AMMINISTRATIVI, Prospetto 1",
+      "ordinamento": "11.3",
+      "input_type": "table",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "consiglio_presente", "input_type": "checkbox", "label": "Consiglio Economico" },
+        { "name": "presentazione_rendiconto", "input_type": "checkbox", "label": "Presentaz. Rend. Annuale" },
+        { "name": "attivo_spese", "input_type": "checkbox", "label": "Fronte Spese Ordinarie" },
+        { "name": "difficoltà_spese", "input_type": "text", "label": "Descriz. Difficoltà" },
+        { "name": "volontari_priscilla", "input_type": "checkbox", "label": "Volontari Priscilla" },
+        { "name": "volontari_priscilla_numero", "input_type": "number", "label": "Numero Volontari Priscilla" },
+        { "name": "privacy_catechismo", "input_type": "checkbox", "label": "Dich. Privacy Iscriz. Catechismo" },
+        { "name": "luogo_conservazione_privacy", "input_type": "text", "label": "Luogo Conservazione dei Dati" }
+      ],
+      "rows": []
+    },
+
+    "dati_economici_amministrativi_prospetto2": {
+      "label": "DATI ECONOMICI E AMMINISTRATIVI, Prospetto 2",
+      "ordinamento": "11.4",
+      "input_type": "table",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "polizza_rc", "input_type": "checkbox", "label": "Versamento Polizza RC" },
+        { "name": "polizza_incendi_eventi_atmosferici", "input_type": "checkbox", "label": "Polizza Incendi/Ev. Atmosferici" },
+        { "name": "polizza_inc_compagnia", "input_type": "text", "label": "Compagnia" },
+        { "name": "polizza_furti_danni", "input_type": "checkbox", "label": "Polizza Furti/Danni da Furto" },
+        { "name": "polizza_fur_compagnia", "input_type": "text", "label": "Compagnia" }
+       
+      ],
+      "rows": []
+    },
+
+    "conti_correnti": {
+      "ordinamento": "11.5",
+      "input_type": "table",
+      "label": "Il conto corrente intestato alla Parrocchia:",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "conto_corrente", "input_type": "checkbox", "label": "CC", "options": ["Sì", "No"], "value": "No" },
+        { "name": "Banca_CC", "input_type": "text", "label": "Banca" },
+        { "name": "Filiale_CC", "input_type": "text", "label": "Filiale" }
+      ],
+      "rows": []
+    },
+    "finanziamenti": {
+      "ordinamento": "11.6",
+      "input_type": "table",
+      "label": "La Parrocchia possiede investimenti finanziari?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "finanziamento", "input_type": "checkbox", "label": "Finanziamento", "options": ["Sì", "No"], "value": "No" },
+        { "name": "deposito", "input_type": "text", "label": "Luogo Deposito" }
+      ],
+      "rows": []
+    },
+    "dipendenti_parrocchiali": {
+      "ordinamento": "11.7",
+      "input_type": "table",
+      "label": "Ci sono dipendenti assunti dall’ente parrocchia?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "presenza_dipendenti", "input_type": "checkbox", "label": "Dipendenti" },
+        { "name": "numero_dipendenti", "input_type": "number", "label": "Numero" },
+        { "name": "mansione", "input_type": "text", "label": "Mansione" }
+      ],
+      "rows": []
+    },
+    "collette_parrocchiali": {
+      "ordinamento": "11.8",
+      "input_type": "table",
+      "label": "La parrocchia versa in economato (Curia) le offerte per le seguenti collette?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "giornata_diocesana_avvento", "input_type": "checkbox", "label": "Giornata Diocesana Avvento", "options": ["Sì", "No"] },
+        { "name": "giornata_diocesana_quaresima", "input_type": "checkbox", "label": "Giornata Diocesana Quaresima", "options": ["Sì", "No"] },
+        { "name": "colletta_pro_terra_santa", "input_type": "checkbox", "label": "Colletta Pro Terra Santa", "options": ["Sì", "No"] },
+        { "name": "giornata_universita_cattolica", "input_type": "checkbox", "label": "Giornata per l’Università Cattolica", "options": ["Sì", "No"] },
+        { "name": "giornata_carita_papa", "input_type": "checkbox", "label": "Giornata per la Carità del Papa", "options": ["Sì", "No"] },
+        { "name": "colletta_giornata_mondiale_migrante_rifugiato", "input_type": "checkbox", "label": "Colletta Giornata Mondiale Migrante e Rifugiato", "options": ["Sì", "No"] },
+        { "name": "giornata_missionaria_mondiale", "input_type": "checkbox", "label": "Giornata Missionaria Mondiale", "options": ["Sì", "No"] }
+      ],
+      "rows": []
+    },
+    "messe_binate": {
+      "ordinamento": "11.9",
+      "input_type": "table",
+      "label": "Come vengono destinate le offerte delle Messe binate (detratta la quota spettante al celebrante)?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "versamento_curia", "input_type": "checkbox", "label": "Vengono versate in Curia" },
+        { "name": "invio_missione", "input_type": "checkbox", "label": "Vengono inviate in missione" }
+      ],
+      "rows": []
+    },
+    "legati_santamessa": {
+      "ordinamento": "11.10",
+      "input_type": "table",
+      "label": "Esistono legati per la celebrazione di Sante Messe?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "legati", "input_type": "checkbox", "label": "Presenza dei Legati" },
+        { "name": "descrizione", "input_type": "text", "label": "Breve Descrizione" }
+      ],
+      "rows": []
+    },
+    "circoli_parrocchiali": {
+      "ordinamento": "11.11",
+      "input_type": "table",
+      "label": "Esistono circoli parrocchiali (tipo ANSPI/ACLI/MCL(CSI)?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "circolo", "input_type": "checkbox", "label": "Presenza Circoli" },
+        { "name": "denominazione", "input_type": "text", "label": "Denominazione" }
+      ],
+      "rows": []
+    },
+    "scuole_infanzia_&_caseriposo_parrocchiali": {
+      "ordinamento": "11.12",
+      "input_type": "table",
+      "label": "Scuole dell’infanzia e case di riposo parrocchiali?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "scuola", "input_type": "checkbox", "label": "Scuole" },
+        { "name": "presentazione_bilancio_scuola", "input_type": "checkbox", "label": "VIENE PRESENTATO IL BILANCIO ALLA CURIA?" },
+        { "name": "casariposo", "input_type": "checkbox", "label": "Casa Riposo" },
+        { "name": "presentazione_bilancio_casariposo", "input_type": "checkbox", "label": "VIENE PRESENTATO IL BILANCIO ALLA CURIA?" }
+      ],
+      "rows": []
+    },
+    "debiti_parrocchiali": {
+      "ordinamento": "11.13",
+      "input_type": "table",
+      "label": "La parrocchia ha debiti verso banche, enti o privati?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "debito", "input_type": "checkbox", "label": "Debito" },
+        { "name": "creditore", "input_type": "text", "label": "Creditore" },
+        { "name": "importo_iniziale", "input_type": "number", "label": "Importo Iniziale" },
+        { "name": "rimanenza", "input_type": "number", "label": "Rimanenza" },
+        { "name": "piano_ammortamento", "input_type": "text", "label": "Piano di Ammortamento" }
+      ],
+      "rows": []
+    }
+  },
+
+  "dati_cammini_fede": {
+    "label": "CAMMINI DI FEDE",
+    "ordinamento": "12",
+    "battesimo_bambini": {
+      "ordinamento": "12.1",
+      "label": "Il battesimo dei bambini",
+      "bool_laici_accompagnatori_genitori_battesimo_bimbi": {
+        "ordinamento": "12.1.1",
+        "input_type": "radio",
+        "label": "Vi sono laici per l’accompagnamento dei genitori al sacramento del Battesimo dei bambini?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+     
+      "numero_incontri_genitori": {
+        "ordinamento": "12.1.2",
+        "input_type": "table",
+        "label": "Quanti incontri con i genitori?",
+        "allowAddRows": true,
+        "allowRemoveRows": true,
+        "depends_on": ["parrocchie"],
+        "columns": [
+          { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+          {
+            "input_type": "range",
+            "label" : "Numero Incontri",
+            "range_min": 0,
+            "range_max": 50,
+            "value": 3
+          }
+        ],
+        "rows": []
+      },
+
+
+      "bool_cammino_famiglie_bimbi_06anni": {
+        "ordinamento": "12.1.3",
+        "input_type": "radio",
+        "label": "Vi è un cammino per famiglie con bambini da 0 a 6 anni?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+      "descrizione_cammino_famiglie_bimbi_06anni": {
+        "ordinamento": "12.1.4",
+        "input_type": "textarea",
+        "label": "Se sì come è articolato?"
+      }
+    },
+    "iniziazione_cristiana_degli_adulti": {
+      "ordinamento": "12.2",
+      "label": "L’iniziazione cristiana degli adulti",
+      "bool_presenza_cammino_adulti": {
+        "ordinamento": "12.2.1",
+        "input_type": "radio",
+        "label": "C’è un’attenzione all’iniziazione cristiana degli adulti con la proposta del cammino diocesano del catecumenato, obbligatorio per coloro che chiedono il Battesimo-Cresima-Eucaristia dai 14 anni in avanti?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+      "descrizione_collegamento_servizio_diocesano_catecumenato": {
+        "ordinamento": "12.2.2",
+        "input_type": "textarea",
+        "label": "Come viene vissuto il collegamento con il Servizio diocesano per il catecumenato?"
+      }
+    },
+
+"iniziazione_cristiana_dei_ragazzi": {
+      "ordinamento": "12.3",
+      "label": "Iniziazione cristiana dei ragazzi",
+
+      "bool_presenza_cammino_ragazzi": {
+        "ordinamento": "12.3.1",
+        "input_type": "radio",
+        "label": "Il cammino di iniziazione cristiana è comune a tutte le parrocchie della Comunità pastorale?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+      "descrizione_cammino_ragazzi": {
+        "ordinamento": "12.3.2",
+        "input_type": "textarea",
+        "label": "In che cosa converge?"
+      },
+
+      "età_sacramenti_cristiani": {
+      "ordinamento": "12.3.3",
+      "input_type": "table",
+      "label": "In che età vengono celebrati i Sacramenti dell’Iniziazione cristiana?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "columns": [
+        { "name": "sacramento", "input_type": "select", "options":["Confessione", "Comunione", "Cresima"], "label": "Sacramento" },
+        { "name": "età", "input_type": "number", "label": "Età" }
+      ],
+      "rows": []
+    },
+
+    "bool_presenza_acr": {
+        "ordinamento": "12.3.4",
+        "input_type": "radio",
+        "label": "L'ACR è presente:",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+
+     "bool_iniziazione_cristiana_acr": {
+        "ordinamento": "12.3.5",
+        "input_type": "radio",
+        "label": "L'ACR compie il cammino di Iniziazione Cristiana",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+
+      "bool_presenza_agesci": {
+        "ordinamento": "12.3.6",
+        "input_type": "radio",
+        "label": "L'AGESCI è presente:",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+
+     "bool_iniziazione_cristiana_agesci": {
+        "ordinamento": "12.3.7",
+        "input_type": "radio",
+        "label": "L'AGESCI compie il cammino di Iniziazione Cristiana",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+
+      "frequentanti": {
+        "ordinamento": "13.3.8",
+        "input_type": "table",
+        "label": "Compilare la tabella seguente indicando i frequentanti alla catechesi di Iniziazione cristiana in ciascuna parrocchia della Comunità pastorale.",
+        "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+        "columns": [
+          { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+          { "name": "numero_frequentanti", "input_type": "number", "label": "Numero Freq." },
+          { "name": "fascia_età", "input_type": "text", "label": "Fascia d'età" },
+          {
+            "name" : "frequenza",
+            "input_type": "radio",
+            "label": "Frequenza",
+            "options": ["Giornaliera", "Settimanale", "Bisettimanale", "Mensile", "Altro"],
+            "value": "Annuale"
+          }
+        ],
+        "rows": []
+      },
+
+  "bool_presenza_altre_iniziative_ragazzi_cpa": {
+        "ordinamento": "12.3.9",
+        "input_type": "radio",
+        "label": "Vi sono nella Comunità pastorale altre iniziative a favore dei ragazzi?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+
+      "descrizione_altre_iniziative_ragazzi_cpa": {
+        "ordinamento": "12.3.10",
+        "input_type": "textarea",
+        "label": "Se sì, quali?"
+      },
+
+
+      "bool_utilizzo_sussidi_diocesi": {
+        "ordinamento": "12.3.9",
+        "input_type": "radio",
+        "label": "Sono utilizzati i sussidi di Avvento e Quaresima della Diocesi?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+
+      "bool_partecipazione_iniziative_tempiforti_diocesi": {
+        "ordinamento": "12.3.10",
+        "input_type": "radio",
+        "label": "Si partecipa alle iniziative di Avvento e Quaresima della Diocesi?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+
+      "bool_iniziative_accompagnamento_genitori": {
+        "ordinamento": "12.3.11",
+        "input_type": "radio",
+        "label": "Vi sono iniziative per l’accompagnamento dei genitori?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+
+      "descrizione_iniziative_accompagnamento_genitori": {
+        "ordinamento": "12.3.12",
+        "input_type": "textarea",
+        "label": "Se sì, quali?"
+      }
+
+
+    },
+
+    "cammini_accompagnamento_vita_fede": {
+      "ordinamento": "12.4",
+      "label": "CAMMINI PER ACCOMPAGNARE NELLA VITA DI FEDE",
+
+      "cammini_adolescenti_1318anni": {
+      "ordinamento": "12.4.1",
+      "label": "Cammini per adolescenti (13-18 anni)",
+
+      "frequentanti": {
+        "ordinamento": "12.4.1.1",
+        "input_type": "table",
+        "label": "Compilare la tabella seguente indicando i frequentanti alle esperienze proposte in ciascuna parrocchia della Comunità pastorale.",
+        "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+        "columns": [
+          { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+          { "name": "gruppo", "input_type": "text", "label": "Gruppo" },
+          { "name": "fascia_età", "input_type": "text", "label": "Fascia d'età" },
+          { "name": "numero_frequentanti", "input_type": "number", "label": "Partecipanti" },
+          {
+            "name" : "frequenza",
+            "input_type": "radio",
+            "label": "Frequenza",
+            "options": ["Giornaliera", "Settimanale", "Bisettimanale", "Mensile", "Altro"],
+            "value": "Settimanale"
+          }
+        ],
+        "rows": []
+      },
+
+"bool_iniziative_parrocchia_adolescenti": {
+        "ordinamento": "12.4.1.2",
+        "input_type": "radio",
+        "label": "Vi sono in parrocchia altre iniziative a favore degli adolescenti?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+  
+      "descrizione_iniziative_parrocchia_adolescenti": {
+        "ordinamento": "12.4.1.3",
+        "input_type": "textarea",
+        "label": "Se sì, quali?"
+      },
+
+      "bool_utilizzo_sussidi_diocesi": {
+        "ordinamento": "12.4.1.4",
+        "input_type": "radio",
+        "label": "Sono utilizzati i sussidi proposti dalla Diocesi?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+
+      "descrizione_utilizzo_sussidi_diocesi": {
+        "ordinamento": "12.4.1.5",
+        "input_type": "textarea",
+        "label": "Se sì, quali?"
+      },
+
+      "presenza_agesci_acg": {
+      "ordinamento": "12.4.1.6",
+      "input_type": "checkbox",
+      "label": "È presente:",
+      "options": [
+        "ACG",
+        "AGESCI"
+      ],
+      "value": []
+    },
+
+
+    "bool_iniziative_accompagnamento_genitori": {
+      "ordinamento": "12.4.1.7",
+      "input_type": "radio",
+      "label": "Vi sono iniziative per l’accompagnamento dei genitori?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+
+    "descrizione_iniziative_accompagnamento_genitori": {
+      "ordinamento": "12.4.1.8",
+      "input_type": "textarea",
+      "label": "Se sì, quali?"
+    },
+
+    "bool_promozione_incontri_a_tema": {
+      "ordinamento": "12.4.1.9",
+      "input_type": "radio",
+      "label": "Sono promossi incontri per genitori di ragazzi su temi specifici con esperti (riguardanti i giovani: disagio giovanile, sessualità, dipendenze, educazione, … oppure riguardanti altri tematiche: formazione umana, psicologica,..)?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    }
+  },
+
+  "cammini_giovani_19+": {
+      "ordinamento": "12.5",
+      "label": "Cammini per i giovani (dai 19 anni)",
+      "frequentanti": {
+        "ordinamento": "12.5.1",
+        "input_type": "table",
+        "label": "Compilare la tabella seguente indicando i frequentanti alle esperienze proposte in ciascuna parrocchia della Comunità pastorale.",
+        "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+        "columns": [
+          { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+          { "name": "gruppo", "input_type": "text", "label": "Gruppo" },
+          { "name": "numero_frequentanti", "input_type": "number", "label": "Partecipanti" },
+          {
+            "name" : "frequenza",
+            "input_type": "radio",
+            "label": "Frequenza",
+            "options": ["Giornaliera", "Settimanale", "Bisettimanale", "Mensile", "Altro"],
+            "value": "Settimanale"
+          }
+        ],
+        "rows": []
+      },
+
+      "bool_iniziative_parrocchia_giovani": {
+        "ordinamento": "12.5.2",
+        "input_type": "radio",
+        "label": "Vi sono in parrocchia altre iniziative a favore dei giovani?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+  
+      "descrizione_iniziative_parrocchia_giovani": {
+        "ordinamento": "12.5.3",
+        "input_type": "textarea",
+        "label": "Se sì, quali?"
+      },
+
+      "bool_utilizzo_sussidi_diocesi": {
+        "ordinamento": "12.5.3",
+        "input_type": "radio",
+        "label": "Sono utilizzati i sussidi proposti dalla Diocesi?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+
+      "descrizione_utilizzo_sussidi_diocesi": {
+        "ordinamento": "12.5.4",
+        "input_type": "textarea",
+        "label": "Se sì, quali?"
+      },
+
+      "presenza_agesci_acg": {
+      "ordinamento": "12.5.5",
+      "input_type": "checkbox",
+      "label": "È presente:",
+      "options": [
+        "ACG",
+        "AGESCI"
+      ],
+      "value": []
+    },
+
+    "bool_esperienza_oratorio_cpa": {
+        "ordinamento": "12.5.6",
+        "input_type": "radio",
+        "label": "È attiva in Comunità pastorale l’esperienza dell’Oratorio?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      },
+
+      "oratori_comunità_pastorale": {
+        "ordinamento": "12.5.7",
+        "input_type": "table",
+        "label": "Se sì, in quali parrocchie? Quali persone coinvolge? In che momenti è attivato?",
+        "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+        "columns": [
+          { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+          { "name": "coinvolti", "input_type": "text", "label": "Persone Coinvolte" },
+          { "name": "momenti_attivazione", "input_type": "text", "label": "Momenti" }
+        ],
+        "rows": []
+      }
+  },
+
+"cammini_adulti": {
+      "ordinamento": "12.6",
+      "label": "Cammini di fede per adulti",
+
+"bool_cammini_fede_adulti": {
+        "ordinamento": "12.6.1",
+        "input_type": "radio",
+        "label": "Sono presenti cammini di fede per adulti?",
+        "options": ["Sì", "No"],
+        "value": "No"
+      }, 
+       
+"tipi_cammini_fede_adulti": {
+      "label": "Se sì quali?",
+      "ordinamento": "12.6.2",
+      "input_type": "table",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "ascolto_parola", "input_type": "checkbox", "label": "Percorsi di ascolto della Parola" },
+        { "name": "gruppi_preghiera", "input_type": "checkbox", "label": "Gruppi di preghiera" },
+        { "name": "incontri_biblici_teologici", "input_type": "checkbox", "label": "Incontri a carattere biblico-teologico" },
+        { "name": "azione_cattolica", "input_type": "checkbox", "label": "Azione Cattolica" },
+        { "name": "masci", "input_type": "checkbox", "label": "MASCI" },
+        { "name": "ritiri_spirituali", "input_type": "checkbox", "label": "Ritiri spirituali per adulti" }
+       
+      ],
+      "rows": []
+    },
+
+    "altri_tipi_cammini_fede_adulti": {
+      "label": "Altri tipi di cammini di fede per adulti:",
+      "ordinamento": "12.6.3",
+      "input_type": "table",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "nome_cammino_movimento", "input_type": "text", "label": "Cammino/Movimento" },
+        { "name": "altro", "input_type": "text", "label": "Altro" }
+       
+      ],
+      "rows": []
+    },
+
+    "cammini_presenti_parrocchia": {
+      "label": "Quali cammini sono vissuti nella parrocchia?",
+      "ordinamento": "12.6.4",
+      "input_type": "table",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "nome_cammino_movimento", "input_type": "text", "label": "Cammino/Movimento" },
+        { "name": "descrizione_cammino_movimento", "input_type": "text", "label": "Descriz." }
+       
+      ],
+      "rows": []
+    },
+
+    "cammini_presenti_cpa": {
+      "label": "Quali nella Comunità pastorale?",
+      "ordinamento": "12.6.5",
+      "input_type": "table",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "columns": [
+        { "name": "nome_cammino_movimento", "input_type": "text", "label": "Cammino/Movimento" },
+        { "name": "descrizione_cammino_movimento", "input_type": "text", "label": "Descriz." }
+       
+      ],
+      "rows": []
+    },
+
+    "cammini_presenti_vicariato": {
+      "label": "Quali nel Vicariato?",
+      "ordinamento": "12.6.6",
+      "input_type": "table",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "columns": [
+        { "name": "nome_cammino_movimento", "input_type": "text", "label": "Cammino/Movimento" },
+        { "name": "descrizione_cammino_movimento", "input_type": "text", "label": "Descriz." }
+       
+      ],
+      "rows": []
+    },
+
+    "bool_presenza_pastorale_anziani_dedicata": {
+      "ordinamento": "12.6.7",
+      "input_type": "radio",
+      "label": "Per gli anziani vi è una pastorale dedicata?",
+      "options": ["Sì", "No"],
+      "value": "No"
+},
+
+"descrizione_pastorale_anziani_dedicata": {
+  "ordinamento": "12.6.8",
+  "input_type": "textarea",
+  "label": "Se sì, come è articolata?"
+}
+
+  },
+
+
+"itinerario_preparazione_matrimonio" : 
+
+  {
+    "ordinamento": "12.7",
+    "label": "Itinerario di preparazione al matrimonio",
+
+    "itinerario": {
+      "ordinamento": "12.7.1",
+      "input_type": "table",
+      "label": "Indicare nella tabella se viene svolto un itinerario di preparazione al matrimonio; riportare quindi il numero di incontri e indicare da chi è guidato (sono possibili più risposte).",
+      "columns": [
+        { "name": "livello", "label": "Livello", "input_type": "select", "options":["Parrocchiale", "Comunità Pastorale", "Vicariato"] },
+        { "name": "numero_incontri", "input_type": "number", "label": "Numero Incontri" },
+        { "name": "guida_coppie_sposi", "input_type": "checkbox", "label": "GUIDATO DA COPPIE DI SPOSI" },
+        { "name": "guida_parroco", "input_type": "checkbox", "label": "GUIDATO DA PARROCO" },
+        { "name": "guida_esterni", "input_type": "checkbox", "label": "GUIDATO DA ESTERNI" }
+      ],
+      "rows": []
+    },
+
+    "note": {
+  "ordinamento": "12.7.2",
+  "input_type": "textarea",
+  "label": "Note"
+}
+
+  },
+
+
+"iniziative_famiglie" : 
+
+  {
+    "ordinamento": "12.8",
+    "label": "Iniziative per le famiglie",
+
+    "bool_presenza_gruppi_famiglia": {
+      "ordinamento": "12.8.1",
+      "input_type": "radio",
+      "label": "C’è la presenza di gruppi famiglia:",
+      "options": ["Sì", "No"],
+      "value": "No"
+},
+
+"bool_presenza_iniziative_cpa": {
+  "ordinamento": "12.8.2",
+  "input_type": "radio",
+  "label": "Vi sono in Comunità pastorale altre iniziative a favore della famiglia?",
+  "options": ["Sì", "No"],
+  "value": "No"
+},
+
+"dettaglio": {
+  "label": "Quali cammini sono vissuti nella parrocchia?",
+  "ordinamento": "12.8.3",
+  "input_type": "table",
+  "allowAddRows": true,
+  "allowRemoveRows": true,
+  "depends_on": ["parrocchie"],
+  "columns": [
+    { "name": "nome_iniziativa", "input_type": "text", "label": "Iniziativa" },
+    { "name": "livello", "label": "Livello", "input_type": "select", "options":["Parrocchiale", "Comunità Pastorale", "Vicariato"] },
+    { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+    { "name": "descrizione_iniziativa", "input_type": "text", "label": "Descriz." }
+   
+  ],
+  "rows": []
+}
+
+  }
+
+
+
+},
+
+"accompagnatori_cammini_fede" : {
+
+  "label": "Gli accompagnatori nei cammini di fede",
+  "ordinamento": "12.9",
+
+  "nro_per_bambini" : {
+      "ordinamento": "12.9.1",
+      "input_type": "range",
+      "range_min": 0,
+      "range_max": 1000,
+      "value": 10,
+      "label": "Numero di catechisti ed educatori della Comunità pastorale per i bambini (elementari):"
+      
+    },
+
+  "nro_per_ragazzi" : {
+      "ordinamento": "12.9.2",
+      "input_type": "range",
+      "range_min": 0,
+      "range_max": 1000,
+      "value": 10,
+      "label": "Numero di catechisti ed educatori della Comunità pastorale per i ragazzi (medie):"
+      
+    },
+
+    "nro_per_adolescenti" : {
+      "ordinamento": "12.9.3",
+      "input_type": "range",
+      "range_min": 0,
+      "range_max": 1000,
+      "value": 10,
+      "label": "Numero di catechisti ed educatori della Comunità pastorale per gli adolescenti (superiori):"
+      
+    },
+
+    "nro_per_giovani" : {
+      "ordinamento": "12.9.4",
+      "input_type": "range",
+      "range_min": 0,
+      "range_max": 1000,
+      "value": 10,
+      "label": "Numero di catechisti ed educatori della Comunità pastorale per i giovani:"
+      
+    },
+
+    "nro_per_adulti" : {
+      "ordinamento": "12.9.5",
+      "input_type": "range",
+      "range_min": 0,
+      "range_max": 1000,
+      "value": 10,
+      "label": "Numero di catechisti ed educatori della Comunità pastorale per gli adulti:"
+    },
+
+    "dettaglio": {
+  "label": "DETTAGLIO - Gli accompagnatori nei cammini di fede",
+  "ordinamento": "12.9.6",
+  "input_type": "table",
+  "allowAddRows": true,
+  "allowRemoveRows": true,
+  "depends_on": ["parrocchie"],
+  "columns": [
+    { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+    { "name": "livello", "label": "Livello", "input_type": "select", "options":["Bambini (Elementari)", "Ragazzi (Medie)", "Adolescenti (Superiori)", "Giovani", "Adulti"] },
+    { "name": "numero", "label": "Numero", "input_type": "number" },
+    { "name": "descrizione", "input_type": "text", "label": "Descriz." }
+   
+  ],
+  "rows": []
+},
+
+    "esistenza_formazione": {
+      "ordinamento": "12.9.7",
+      "input_type": "checkbox",
+      "label": "Esiste una formazione per catechisti ed educatori?",
+      "options": [
+        "Sì",
+        "No",
+        "Parrocchiale",
+        "Di Comunità pastorale",
+        "Vicariale"
+      ],
+      "value": []
+    },
+
+    "formazione_diocesana": {
+      "ordinamento": "12.9.8",
+      "input_type": "checkbox",
+      "label": "I catechisti ed educatori hanno seguito una formazione diocesana?",
+      "options": [
+        "Sì",
+        "No",
+        "Una minima parte",
+        "Una buona parte"
+      ],
+      "value": []
+    },
+
+  "bool_ritrovo_periodico_catechisti": {
+  "ordinamento": "12.9.9",
+  "input_type": "radio",
+  "label": "I catechisti si ritrovano periodicamente come gruppo?",
+  "options": ["Sì", "No"],
+  "value": "No"
+},
+
+"cadenza_ritrovo_catechisti": {
+  "ordinamento": "12.9.10",
+  "input_type": "checkbox",
+  "label": "Se si con quale cadenza?",
+  "options": [
+    "Settimanale",
+    "Quindicinale",
+    "Mensile",
+    "Altro"
+  ],
+  "value": []
+},
+
+"descrizione_cadenza_ritrovo_catechisti": {
+  "ordinamento": "12.9.11",
+  "input_type": "textarea",
+  "label": "Se altra cadenza, specificare:"
+},
+
+"descrizione_formazione_educatori_adolescenti&giovani": {
+  "ordinamento": "12.9.12",
+  "input_type": "textarea",
+  "label": "Come avviene la formazione degli educatori dei gruppi di adolescenti e giovani?"
+},
+
+"bool_catechesi_disabili": {
+  "ordinamento": "12.9.13",
+  "input_type": "radio",
+  "label": "C’è una attenzione alla catechesi per i disabili?",
+  "options": ["Sì", "No"],
+  "value": "No"
+},
+
+"descrizione_catechesi_disabili": {
+  "ordinamento": "12.9.14",
+  "input_type": "textarea",
+  "label": "Descrizione dell'attenzione alla catechesi per i disabili"
+},
+
+"referenti_iniziazione_cristiana": {
+      "ordinamento": "12.9.15",
+      "input_type": "table",
+      "label": "È stata individuata la figura del referente dei catechisti di Iniziazione cristiana?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on" : ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "nome_ref_ag", "input_type": "text", "label": "Nome" },
+        { "name": "cognome_ref_ag", "input_type": "text", "label": "Cognome" }
+      ],
+      "rows": []
+    },
+
+  "referenti_adolescenti_giovani": {
+      "ordinamento": "12.9.16",
+      "input_type": "table",
+      "label": "È stata individuata la figura del referente degli educatori degli adolescenti e giovani?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on" : ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "nome_ref_ag", "input_type": "text", "label": "Nome" },
+        { "name": "cognome_ref_ag", "input_type": "text", "label": "Cognome" }
+      ],
+      "rows": []
+    },
+
+  "bool_presenza_insegnanti_religione": {
+  "ordinamento": "12.9.17",
+  "input_type": "radio",
+  "label": "Sono presenti Insegnanti di Religione Cattolica impegnati nella pastorale?",
+  "options": ["Sì", "No"],
+  "value": "No"
+},
+
+"insegnanti": {
+      "ordinamento": "12.9.18",
+      "input_type": "table",
+      "label": "Se sì, indicare i nominativi",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on" : ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "nome_ir", "input_type": "text", "label": "Nome" },
+        { "name": "cognome_ir", "input_type": "text", "label": "Cognome" }
+      ],
+      "rows": []
+    }
+  }
+
+
+},
+
+  "dati_liturgia": {
+    "label": "LITURGIA",
+    "ordinamento": "13",
+    "adeguamento_CV2": {
+      "ordinamento": "13.1",
+      "input_type": "table",
+      "label": "Nelle chiese della Comunità pastorale è stato realizzato l’adeguamento degli spazi liturgici secondo le indicazioni delle Riforma del Concilio Vaticano II?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "adeguamento", "input_type": "checkbox", "label": "Adeguamento CVII" },
+        { "name": "nome_chiesa_noCV2", "input_type": "text", "label": "Note (Nomi chiese)" }
+      ],
+      "rows": []
+    },
+    "ministerialità_liturgia": {
+      "ordinamento": "13.2",
+      "input_type": "table",
+      "label": "Quali gruppi e ministerialità (gruppo liturgico, gruppo lettori, gruppo ministranti, Ministri straordinari della Comunione, coro, ecc.) a servizio della liturgia sono presenti all’interno della Comunità pastorale?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on" : ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia", "readOnly" : true},
+        { "name": "Nome_Ministero", "input_type": "text", "label": "Ministero" },
+        { "name": "descrizione", "input_type": "text", "label": "descrizione" }
+      ],
+      "rows": []
+    },
+    "bool_attività_promozione_liturgica": {
+      "ordinamento": "13.3",
+      "input_type": "radio",
+      "label": "Sono in corso attività per promuovere la qualità delle celebrazioni e una fruttuosa partecipazione (formazione operatori, cura degli arredi, ecc.)?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+    "descrizione_attività_promozione_liturgica": {
+      "ordinamento": "13.4",
+      "input_type": "text",
+      "label": "Se sì, quali?"
+    },
+    "orari_messe": {
+      "ordinamento": "13.5",
+      "input_type": "table",
+      "label": "A livello di Comunità pastorale quali sono gli orari delle Messe, suddivise per parrocchie?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "orario", "input_type": "time", "label": "Orario" },
+        {
+          "name" : "momento",
+          "input_type": "radio",
+          "label": "Tipologia",
+          "options": ["Feriale", "Prefestiva", "Festiva"],
+          "value": "Festiva"
+        },
+        {
+          "name" : "momento",
+          "input_type": "radio",
+          "label": "Momento",
+          "options": ["Estiva", "Invernale", "Annuale"],
+          "value": "Annuale"
+        },
+        {
+          "name" : "frequenza",
+          "input_type": "radio",
+          "label": "Frequenza",
+          "options": ["Giornaliera", "Settimanale", "Bisettimanale", "Mensile", "Ricorrenza"],
+          "value": "Annuale"
+        },
+        { "name": "note", "input_type": "text", "label": "Note" }
+      ],
+      "rows": []
+    },
+    "orari_liturgieParola": {
+      "ordinamento": "13.6",
+      "input_type": "table",
+      "label": "Vi sono Celebrazioni in assenza di presbitero? ...",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+      "columns": [
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+        { "name": "liturgia_parola", "input_type": "checkbox", "label": "Liturgia Parola" },
+        { "name": "cadenza", "input_type": "text", "label": "Cadenza" },
+        { "name": "guida", "input_type": "text", "label": "Guida" },
+        { "name": "preparazione", "input_type": "text", "label": "Descr. Preparazione" }
+      ],
+      "rows": []
+    },
+    "libri_liturgici": {
+      "ordinamento": "13.7",
+      "label": "Libri liturgici",
+      "dettaglio": {
+        "ordinamento": "13.7.1",
+        "input_type": "table",
+        "label": "I libri liturgici sono presenti e aggiornati?",
+        "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on": ["parrocchie"],
+        "columns": [
+          { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia" },
+          { "name": "messale_romano", "input_type": "checkbox", "label": "Ultima Ed. Messale Romano" },
+          { "name": "lezionario", "input_type": "checkbox", "label": "Lezionari CEI 2008" },
+          { "name": "rito_esequie", "input_type": "checkbox", "label": "Ed. CEI 2012" }
+        ],
+        "rows": []
+      }
+    }
+  },
+
+  "dati_carità": {
+    "label": "CARITÀ",
+    "ordinamento": "14",
+    "bool_attività_caritas": {
+      "ordinamento": "14.1",
+      "input_type": "radio",
+      "label": "È presente la Caritas nella Comunità pastorale?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+    "ambiti_carità": {
+      "ordinamento": "14.2",
+      "input_type": "table",
+      "label": "Se sì, in quali settori è maggiormente impegnata ... ?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on" : ["parrocchie"],
+      "columns": [
+        
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia", "readOnly" : true},
+        { "name": "nome_settore", "input_type": "text", "label": "Settore" },
+        { "name": "descrizione", "input_type": "text", "label": "Descrizione" }
+      ],
+      "rows": []
+    },
+    "bool_gruppi_caritativi": {
+      "ordinamento": "14.3",
+      "input_type": "radio",
+      "label": "Sono presenti gruppi caritativi?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+    "gruppi_caritativi": {
+      "ordinamento": "14.4",
+      "input_type": "table",
+      "label": "Se sì, quali?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on" : ["parrocchie"],
+      "columns": [
+        
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia", "readOnly" : true},
+        { "name": "nome_gruppo", "input_type": "text", "label": "Gruppo" },
+        { "name": "descrizione", "input_type": "text", "label": "Descrizione" }
+      ],
+      "rows": []
+    },
+    "bool_pastorale_ammalati": {
+      "ordinamento": "14.5",
+      "input_type": "radio",
+      "label": "C’è una attenzione alla Pastorale degli ammalati?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+    "descrizione_pastorale_ammalati": {
+      "ordinamento": "14.6",
+      "input_type": "text",
+      "label": "Se sì, di che tipo?"
+    },
+    "bool_strutture_sanitarie": {
+      "ordinamento": "14.7",
+      "input_type": "radio",
+      "label": "Ci sono strutture sanitarie (ricoveri, ospedali) con cui si tengono i contatti?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+    "contatti_strutture:_sanitarie": {
+      "ordinamento": "14.8",
+      "input_type": "table",
+      "label": "Se sì, che tipo di contatti (assistenza spirituale, ...)?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on" : ["parrocchie"],
+      "columns": [
+        
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia", "readOnly" : true},
+        { "name": "nome_contatto", "input_type": "text", "label": "Contatto" },
+        { "name": "descrizione", "input_type": "text", "label": "Descrizione" }
+      ],
+      "rows": []
+    }
+  },
+
+  "dati_missionarietà": {
+    "ordinamento": "15",
+    "label": "MISSIONI",
+    "bool_gruppo_missionario": {
+      "ordinamento": "15.1",
+      "input_type": "radio",
+      "label": "È presente il gruppo missionario di Comunità pastorale?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+    "attività_gruppo_missionario": {
+      "ordinamento": "15.2",
+      "input_type": "text",
+      "label": "Quali attività svolge?"
+    },
+    "bool_altri_gruppi_missionari": {
+      "ordinamento": "15.3",
+      "input_type": "radio",
+      "label": "Sono presenti altri gruppi di tipo missionario?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    },
+    "gruppi_missionari": {
+      "ordinamento": "15.4",
+      "input_type": "table",
+      "label": "Se sì, quali?",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "depends_on" : ["parrocchie"],
+      "columns": [
+        
+        { "name": "Nome_Parrocchia", "input_type": "text", "label": "Parrocchia", "readOnly" : true},
+        { "name": "nome_gruppo", "input_type": "text", "label": "Gruppo" },
+        { "name": "descrizione", "input_type": "text", "label": "Descrizione" }
+      ],
+      "rows": []
+    }
+  },
+
+  "dati_comunicazione": {
+    "label": "COMUNICAZIONE",
+    "ordinamento": "16",
+
+    "comunicazione_std": {
+      "ordinamento": "16.1",
+      "input_type": "table",
+      "label": "La comunicazione nella Comunità pastorale avviene per mezzo:",
+      "allowAddRows": true,
+      "allowRemoveRows": true,
+      "columns": [
+        
+        { "name": "tipo_mezzo", "input_type": "select", "options":["Bollettino-giornale parrocchiale", 
+                                                                  "Bollettino-giornale Comunità pastorale", 
+                                                                  "Sito internet",
+                                                                  "Piattaforme social",
+                                                                  "Mailing list",
+                                                                  "Altro"], "label": "Tipo" },
+        { "name": "descrizione_mezzo", "input_type": "text", "label": "Descrizione" }
+      ],
+      "rows": []
+    },
+
+    "nuovo_giornale": {
+      "ordinamento": "16.2",
+      "label" : "Il settimanale diocesano 'Il Nuovo giornale'",
+      "bool_abbonamento_parrocchiale": {
+      "ordinamento": "16.2.1",
+      "input_type": "radio",
+      "label": "Le parrocchie della Comunità pastorale sono abbonate al settimanale diocesano?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    }, "bool_vendita_copie": {
+      "ordinamento": "16.2.2",
+      "input_type": "radio",
+      "label": "Vengono vendute settimanalmente copie de “Il Nuovo giornale” in Comunità pastorale?",
+      "options": ["Sì", "No"],
+      "value": "No"
+    }, "numero_copie_vendute": {
+      "ordinamento": "16.2.3",
+      "input_type": "text",
+      "label": "Se sì, indicare quante"
+    }
+
+  },
+
+  "sito_diocesi": {
+    "ordinamento": "16.3",
+    "label" : "Il sito internet della Diocesi",
+    "bool_utilità_sito": {
+    "ordinamento": "16.3.1",
+    "input_type": "radio",
+    "label": "Il sito internet diocesano è strumento utile per la comunicazione e di servizio per la fruizione di modulistica e sussidiazione?",
+    "options": ["Sì", "No"],
+    "value": "No"
+  }, "suggerimenti": {
+    "ordinamento": "16.3.2",
+    "input_type": "textarea",
+    "label": "Suggerimenti:",
+    "value" : ""
+  }
+
+}
+
+
+},
+
+
+"percorso_sinodale" : {
+"label" : "Cammino Sinodale",
+"ordinamento": "17",
+"note" : {
+    "input_type": "textarea",
+    "ordinamento": "17.1",
+    "label": "Quali sono le priorità pastorali individuate? Con chi sono state condivise (CPP, Consiglio di Comunità pastorale, operatori e referenti pastorali, religiosi/e…)? A che punto è la loro attuazione?",
+    "value" : "" }
+
+
+},
+
+
+"rilettura_dati" : {
+
+  "ordinamento": "18",
+  "label": "RILETTURA DEI DATI RACCOLTI",
+
+  "descrizione" : {
+
+"ordinamento": "18.1",
+    "input_type": "textarea",
+    "label": "Dopo aver compilato il questionario pastorale, che ci consegna una fotografia della Comunità, è opportuno procedere ad una sua rilettura al fine di presentare al Vescovo uno spaccato della realtà che abbia l’attenzione di fornire i germogli di novità che s’intravedono e le fratture che si sono rilevate rispetto al cammino pastorale. Per questo motivo ti chiediamo, in forma discorsiva di rispondere alle seguenti provocazioni.",
+    "value" : ""
+
+
+},
+
+"eucaristia" : {
+
+"ordinamento": "18.2",
+"label" : "Eucaristia, cuore della Chiesa",
+"note" : {
+    "input_type": "textarea",
+    "label": "Come celebriamo nella nostra Comunità pastorale? Quali sono le risorse che ci aiutano a vivere l’Eucaristia domenicale come fonte e culmine di un cammino personale e comunitario? Quali sono le fatiche che possiamo superare per vivere al meglio le celebrazioni nelle Comunità pastorali? Le nostre celebrazioni da chi sono partecipate? Quali attenzioni sono rivolte ai ragazzi e ai giovani nell’ambito della liturgia? Come si integrano i cammini di Iniziazione cristiana nella Celebrazione domenicale? Ci sono delle “buone prassi” che desiderate approfondire e rendere patrimoni comune di tutta la Comunità pastorale? Se condividiamo il pane celeste, come non condivideremo il pane terreno?” (Didaché): in che modo si esprime il legame tra Eucaristia e Carità?",
+    "value" : "" }
+
+
+},
+
+
+"iniziazione_cristiana_ragazzi" : {
+
+"ordinamento": "18.3",
+"label" : "Iniziazione cristiana dei ragazzi",
+"note" : {"input_type": "textarea",
+    "label": "Qual è il positivo che emerge a partire dai cammini di Iniziazione dei Ragazzi? Come interagiscono i genitori con la proposta rivolta ai loro figli? Sono in atto delle attenzioni specifiche? Sono vissute positivamente? Qual è il dato più negativo riguardante la proposta di Iniziazione dei Ragazzi? Si riflette, come Comunità, su come affrontare le sfide educative che questo tempo ci pone? Esiste un luogo di incontro e sostegno per i catechisti? Che rapporto c’è tra il cammino catechistico dei ragazzi e la proposta dei gruppi adolescenti?",
+    "value" : "" }
+
+
+},
+
+
+"questione_adulti" : {
+
+"ordinamento": "18.4",
+"label" : "La questione degli adulti",
+"note" : {
+    "input_type": "textarea",
+    "label": "Quale proposta offre la Comunità per il mondo degli adulti? Quali esperienze positive sono già in atto? Cosa desideriamo attuare per accompagnare meglio la vita degli adulti? Quali espressioni di vita comunitaria, vissuta nella fede, esprimono meglio l’esperienza ecclesiale di questa Comunità pastorale?",
+    "value" : ""  }
+
+
+}
+
+
+
+
+
+}
+
+
+
+
+
+}
+
+
+
+
+
+  

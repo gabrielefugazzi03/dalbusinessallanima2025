@@ -1,0 +1,44 @@
+[
+  {
+    "ID_Vicariato": 1,
+    "Nome_Vicariato": "Vicariato comuni di Piacenza e Gossolengo",
+    "Vicario": "don Federico Tagliaferri",
+    "mail_vicario" : "segreteria@sangiuseppeoperaio.it"
+  },
+  {
+    "ID_Vicariato": 2,
+    "Nome_Vicariato": "Vicariato Val D'Arda",
+    "Vicario": "mons. Giuseppe Illica",
+    "mail_vicario" : "ufficioparrocchiasanfiorenzo@gmail.com"
+  },
+  {
+    "ID_Vicariato": 3,
+    "Nome_Vicariato": "Vicaricato Val Nure",
+    "Vicario": "don Claudio Carbeni",
+    "mail_vicario" : "claudio@carbeni1964@gmail.com"
+  },
+  {
+    "ID_Vicariato": 4,
+    "Nome_Vicariato": "Vicariato bassa e media val Trebbia val Luretta",
+    "Vicario": "don Fabio Galli",
+    "mail_vicario" : "parrocchiasannicolapc@legalmail.it"
+  },
+  {
+    "ID_Vicariato": 5,
+    "Nome_Vicariato": "vicariato val Tidone",
+    "Vicario": "don Andrea Campisi",
+    "mail_vicario" : "parrocchia.csg@gmail.com"
+  },
+  {
+    "ID_Vicariato": 6,
+    "Nome_Vicariato": "vicariato Bobbio: Alta val Trebbia, Aveto e Otre Penice",
+    "Vicario": "mons. Aldo Maggi",
+    "mail_vicario" : "maggialdo56@gmail.com"
+  },
+  {
+    "ID_Vicariato": 7,
+    "Nome_Vicariato": "Vicariato: val Taro – val Ceno",
+    "Vicario": "don Attilio Defendenti",
+    "mail_vicario" : "attiliodefendenti@gmail.com"
+  }
+]

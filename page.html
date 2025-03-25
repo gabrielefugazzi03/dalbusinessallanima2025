@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dettaglio Questionario - Fabbrica Integrata</title>
+  <link rel="icon" type="image/x-icon" href="logo.ico" />
+  <!-- Includi il Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+  <!-- Importa il font Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    .large-textarea {
+      min-height: 150px;
+      width: 100%;
+      resize: vertical;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1em;
+    }
+    /* RESET & BASE */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* BACKGROUND ANIMATO */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #333;
+      padding: 20px;
+      display: flex;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* SIDEBAR */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background: linear-gradient(rgba(45,52,54,0.9), rgba(45,52,54,0.9)), url("sfondo.jpeg") no-repeat center center;
+      background-size: cover;
+      color: #dfe6e9;
+      padding: 60px 20px 20px;
+      overflow-y: auto;
+      transition: width 0.3s, padding 0.3s;
+    }
+    #sidebar.collapsed {
+      width: 0;
+      padding: 60px 0 20px 0;
+      overflow: hidden;
+    }
+    #sidebar h2 {
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1.2em;
+    }
+    #sidebar ul { list-style: none; padding: 0; margin: 0; }
+    #sidebar ul li { margin-bottom: 5px; }
+    #sidebar ul li a {
+      color: #dfe6e9;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    #sidebar ul li a:hover { text-decoration: underline; }
+    #sidebar ul ul { margin-left: 15px; }
+    /* TOGGLE BUTTON */
+    #toggleContainer {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+    }
+    #sidebarToggle {
+      background: #2d3436;
+      border: none;
+      color: #dfe6e9;
+      font-size: 1.5em;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    #sidebarToggle:hover { background: #3b4043; }
+    /* MAIN CONTENT */
+    #main-content {
+      margin-left: 270px;
+      padding: 20px;
+      width: calc(100% - 270px);
+      overflow-y: auto;
+      transition: margin-left 0.3s, width 0.3s;
+      background: rgba(255,255,255,0.9);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    #main-content.expanded {
+      margin-left: 20px;
+      width: calc(100% - 20px);
+    }
+    h1 { font-size: 2em; margin-bottom: 20px; }
+    /* FORM STYLES */
+    .form-group { margin-bottom: 15px; }
+    fieldset {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    fieldset legend { font-weight: 700; padding: 0 10px; color: #2d3436; }
+    label { display: inline-block; margin-bottom: 5px; font-weight: 500; }
+    select {
+      min-width: 200px;
+      padding: 8px;
+      margin-top: 2px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: auto;
+      white-space: normal;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    input[type="datetime-local"],
+    textarea {
+      padding: 8px;
+      margin-top: 2px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+    }
+    textarea { resize: vertical; }
+    .checkbox-group label { margin-right: 15px; margin-top: 5px; display: inline-block; }
+    input[type="range"] { margin-right: 8px; vertical-align: middle; }
+    .range-output { display: inline-block; min-width: 80px; }
+    /* OUTPUT JSON */
+    #json-output {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 20px;
+    }
+    /* LAST MODIFICATION LABEL */
+    #last-modification {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #dfe6e9;
+      color: #2d3436;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    /* TABELLE COMPATTE */
+    table.compact-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 10px 0;
+      font-size: 0.9rem;
+    }
+    table.compact-table th,
+    table.compact-table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    table.compact-table thead { background-color: #f8f8f8; }
+    table.compact-table tbody tr:nth-child(even) { background-color: #fafafa; }
+    table.compact-table tbody tr:hover { background-color: #f1f1f1; }
+    table.compact-table td input[type="checkbox"] { vertical-align: middle; margin: 0; transform: translateY(1px); }
+    table.compact-table td button {
+      padding: 4px 8px;
+      font-size: 0.8em;
+      margin: 0;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      background: #0984e3;
+      color: #fff;
+      transition: background 0.3s;
+    }
+    table.compact-table td button:hover { background: #74b9ff; }
+    .checkbox-inline { display: inline-flex; align-items: center; cursor: pointer; margin-top: 2px; }
+    .checkbox-inline input[type="checkbox"] { margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <!-- TOGGLE BUTTON -->
+  <div id="toggleContainer">
+    <button id="sidebarToggle" onclick="toggleSidebar()">☰</button>
+  </div>
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+    <h2>INDICE</h2>
+    <div id="sidebar-nav">
+      <!-- La sidebar verrà generata dinamicamente -->
+    </div>
+  </div>
+  <!-- MAIN CONTENT -->
+  <div id="main-content">
+    <div id="last-modification"></div>
+    <h1>Dettaglio Questionario Visita Pastorale</h1>
+    <div id="form-container"></div>
+    <!-- Elementi di debug (opzionali) -->
+    <!-- <button onclick="saveToSupabaseManualmente()">Salva Dati</button>
+    <h2>JSON Generato</h2>
+    <textarea id="json-output" rows="10"></textarea>
+    <a href="index.html" id="backLink" style="color: gold; font-weight: bold; display: inline-block; margin-top: 10px;">Torna alla lista questionari</a> -->
+  </div>
+  <script>
+    /****************************************************
+     * UTILITIES
+     ****************************************************/
+    function getLocalIsoString(date = new Date()) {
+      const offset = date.getTimezoneOffset();
+      const localDate = new Date(date.getTime() - (offset * 60000));
+      return localDate.toISOString().slice(0, 16);
+    }
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+    function sanitizeValues(obj) {
+      if (typeof obj !== "object" || obj === null) return obj;
+      Object.keys(obj).forEach(key => {
+        if (obj[key] === undefined || obj[key] === null) {
+          obj[key] = (typeof obj[key] === "number") ? 0 : "";
+        } else if (typeof obj[key] === "object") {
+          obj[key] = sanitizeValues(obj[key]);
+        }
+      });
+      return obj;
+    }
+    function extractValues(data) {
+      let result = {};
+      Object.keys(data).forEach(key => {
+        if (data[key] && typeof data[key] === "object" && data[key].hasOwnProperty("input_type")) {
+          if (data[key].input_type === "table") {
+            result[key] = { rows: data[key].rows || [] };
+          } else if (data[key].input_type === "number") {
+            result[key] = (data[key].value === undefined || data[key].value === null) ? 0 : data[key].value;
+          } else if (data[key].input_type === "checkbox") {
+            result[key] = Array.isArray(data[key].value) ? data[key].value : [];
+          } else {
+            result[key] = (data[key].value === undefined || data[key].value === null) ? "" : data[key].value;
+          }
+        } else if (data[key] && typeof data[key] === "object") {
+          result[key] = extractValues(data[key]);
+        } else {
+          result[key] = data[key];
+        }
+      });
+      return result;
+    }
+    function mergeData(templateObj, savedObj) {
+      Object.keys(templateObj).forEach(key => {
+        if (savedObj.hasOwnProperty(key)) {
+          const templateField = templateObj[key];
+          const savedField = savedObj[key];
+          if (templateField && templateField.input_type) {
+            if (templateField.input_type === "table") {
+              if (savedField && Array.isArray(savedField.rows)) {
+                templateField.rows = savedField.rows;
+              }
+            } else if (templateField.input_type === "checkbox") {
+              if (Array.isArray(savedField)) {
+                templateField.value = savedField;
+              } else if (savedField && typeof savedField === "object" && savedField.hasOwnProperty("value")) {
+                templateField.value = savedField.value;
+              } else {
+                templateField.value = savedField;
+              }
+            } else {
+              if (savedField && typeof savedField === "object" && savedField.hasOwnProperty("value")) {
+                templateField.value = savedField.value;
+              } else if (savedField !== undefined && savedField !== null && typeof savedField !== "object") {
+                templateField.value = savedField;
+              }
+            }
+          } else if (typeof templateField === "object" && templateField !== null && typeof savedField === "object") {
+            mergeData(templateField, savedField);
+          }
+        }
+      });
+    }
+    function partialMergeRows(dependentField, parrocchieRows) {
+      const newRows = [];
+      const globalRows = dependentField.rows.filter(r => r["Nome_Parrocchia"] === "comunità pastorale");
+      parrocchieRows.forEach(parRow => {
+        const existing = dependentField.rows.find(r => r.ID_Parrocchia === parRow.ID_Parrocchia);
+        if (existing) {
+          Object.keys(parRow).forEach(k => {
+            existing[k] = parRow[k];
+          });
+          newRows.push(existing);
+        } else {
+          newRows.push(JSON.parse(JSON.stringify(parRow)));
+        }
+      });
+      globalRows.forEach(gr => newRows.push(gr));
+      dependentField.rows = newRows;
+    }
+    function findFieldInJson(obj, fieldKey) {
+      if (obj.hasOwnProperty(fieldKey)) return obj[fieldKey];
+      for (let key in obj) {
+        if (typeof obj[key] === "object" && obj[key] !== null) {
+          const found = findFieldInJson(obj[key], fieldKey);
+          if (found) return found;
+        }
+      }
+      return null;
+    }
+    function updateDependentTables() {
+      console.log("updateDependentTables chiamato");
+      const parrocchieRows = jsonData.informazioni_compilazione.parrocchie?.rows || [];
+      console.log("parrocchieRows:", parrocchieRows);
+      function recursiveUpdate(obj) {
+        Object.keys(obj).forEach(key => {
+          const field = obj[key];
+          if (field && typeof field === "object") {
+            if (field.input_type === "table" &&
+                Array.isArray(field.depends_on) &&
+                field.depends_on.includes("parrocchie")) {
+              if (field.__manualModified) return;
+              partialMergeRows(field, parrocchieRows);
+              refreshDependentTable(key);
+            } else {
+              recursiveUpdate(field);
+            }
+          }
+        });
+      }
+      recursiveUpdate(jsonData);
+    }
+    function refreshDependentTable(fieldKey) {
+      const tableEl = document.getElementById(fieldKey);
+      if (!tableEl) {
+        console.warn("Tabella nel DOM non trovata per:", fieldKey);
+        return;
+      }
+      const tbody = tableEl.querySelector("tbody");
+      if (!tbody) return;
+      tbody.innerHTML = "";
+      const field = findFieldInJson(jsonData, fieldKey);
+      if (!field || field.input_type !== "table") return;
+      field.rows.forEach(rowData => {
+        const row = createTableRow(rowData, field.columns, tbody, fieldKey, jsonData, field);
+        tbody.appendChild(row);
+      });
+    }
+    function getGlobalValue(depKey) {
+      if (jsonData.informazioni_compilazione && jsonData.informazioni_compilazione[depKey]) {
+        return jsonData.informazioni_compilazione[depKey].value;
+      }
+      return null;
+    }
+    /****************************************************
+     * CONFIGURAZIONE SUPABASE
+     ****************************************************/
+    // Configurazione Supabase
+const supabaseUrl = 'https://arvsrkvnsnwxhjwklmws.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFydnNya3Zuc253eGhqd2tsbXdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI2NTc1MjgsImV4cCI6MjA1ODIzMzUyOH0.VtsXnQcWKZIdhl1YQ-uLrur5f0Xink66XxKFvIsYLCk';
+// Utilizza un nome diverso per evitare conflitti con la variabile globale 'supabase'
+const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+// Ora usa 'supabaseClient' per tutte le operazioni con Supabase
+// Esempio:
+async function saveToSupabase(valuesToSave) {
+  // Assumiamo che valuesToSave.questionario_id contenga il valore chiave (stringa)
+  const questionarioId = valuesToSave.questionario_id;
+  
+  // Prima controlla se esiste già un record con questo questionario_id
+  let { data: existing, error: selectError } = await supabaseClient
+    .from('raw_questionari')
+    .select('data')
+    .eq('data->>questionario_id', questionarioId)
+    .single();
+  
+  if (selectError && selectError.code !== 'PGRST116') { 
+    // Nota: il codice d'errore potrebbe variare se non viene trovato alcun record.
+    console.error("Errore durante la verifica dell'esistenza:", selectError);
+    return;
+  }
+  
+  if (existing) {
+    // Se il record esiste, esegui un update
+    const { data, error } = await supabaseClient
+      .from('raw_questionari')
+      .update({ data: valuesToSave })
+      .eq('data->>questionario_id', questionarioId);
+    if (error) {
+      console.error("Errore nell'aggiornamento su Supabase:", error);
+    } else {
+      console.log("Record aggiornato:", data);
+    }
+  } else {
+    // Se non esiste, esegui un insert
+    const { data, error } = await supabaseClient
+      .from('raw_questionari')
+      .insert([{ data: valuesToSave }]);
+    if (error) {
+      console.error("Errore nell'inserimento su Supabase:", error);
+    } else {
+      console.log("Record inserito:", data);
+    }
+  }
+}
+    /****************************************************
+     * VARIABILI GLOBALI
+     ****************************************************/
+    let jsonDataTemplate = {};
+    let jsonData = {};
+    let currentMode = "new"; // "new", "edit" oppure "view"
+    let isDirty = false;
+    /****************************************************
+     * SIDEBAR TOGGLE
+     ****************************************************/
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const mainContent = document.getElementById("main-content");
+      sidebar.classList.toggle("collapsed");
+      if (sidebar.classList.contains("collapsed")) {
+        mainContent.classList.add("expanded");
+      } else {
+        mainContent.classList.remove("expanded");
+      }
+    }
+    /****************************************************
+     * HANDLE BACK: Rilascio lock e ritorno alla lista
+     ****************************************************/
+    function handleBackToList(event) {
+      event.preventDefault();
+      window.location.href = "index.html";
+      return;
+    }
+    /****************************************************
+     * LOCK MANAGEMENT (DA RIMUOVERE SE NON NECESSARIO CON SUPABASE)
+     ****************************************************/
+    function generateUUID() {
+      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+        const r = (Math.random() * 16) | 0;
+        const v = c === "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      });
+    }
+    /****************************************************
+     * UPDATE INPUT AVAILABILITY
+     ****************************************************/
+    function updateInputAvailability() {
+      const vicariatoValue = jsonData.informazioni_compilazione?.vicariato?.value;
+      const comunitaValue = jsonData.informazioni_compilazione?.["comunità_pastorale"]?.value;
+      const disable = !(vicariatoValue && comunitaValue);
+      const container = document.getElementById("form-container");
+      const elements = container.querySelectorAll("input, select, textarea");
+      elements.forEach(el => {
+        if (el.id !== "vicariato" && el.id !== "comunità_pastorale") {
+          el.disabled = disable;
+        }
+      });
+    }
+    /****************************************************
+     * LOAD STRUTTURA TEMPLATE (struttura.json)
+     ****************************************************/
+    async function loadStrutturaTemplate() {
+      try {
+        const response = await fetch("struttura.json");
+        jsonDataTemplate = await response.json();
+      } catch (error) {
+        console.error("Errore nel caricamento del template struttura:", error);
+      }
+    }
+    /****************************************************
+     * CARICAMENTO OPZIONI PER SELECT/TABELLE
+     ****************************************************/
+    async function loadOptionsForSelect(field) {
+      if (!field || !field.source_file) return;
+      try {
+        const response = await fetch(field.source_file);
+        let items = await response.json();
+        if (field.depends_on && field.filter_field) {
+          const depValue = getGlobalValue(field.depends_on);
+          if (depValue) {
+            items = items.filter(item => String(item[field.filter_field]) === String(depValue));
+          }
+        }
+        field.options = items.map(item => ({
+          value: item[field.value_field],
+          text: item[field.label_field]
+        }));
+        if (field.placeholder) {
+          field.options.unshift({ value: "", text: field.placeholder });
+        }
+        console.log(`Opzioni mappate per ${field.label}:`, field.options);
+      } catch (error) {
+        console.error("Errore nel caricamento opzioni select:", error);
+      }
+    }
+    async function loadOptionsForTableColumn(column) {
+      if (!column || !column.source_file) return;
+      try {
+        const response = await fetch(column.source_file);
+        const items = await response.json();
+        column.options = items.map(item => ({
+          value: item[column.value_field],
+          text: item[column.label_field]
+        }));
+        if (column.placeholder) {
+          column.options.unshift({ value: "", text: column.placeholder });
+        }
+      } catch (error) {
+        console.error("Errore nel caricamento opzioni colonna tabella:", error);
+      }
+    }
+    async function loadRowsForTable(field) {
+      if (Array.isArray(field.rows) && field.rows.length > 0) {
+        return;
+      }
+      if (!field || !field.source_file) {
+        if (Array.isArray(field.columns)) {
+          for (const col of field.columns) {
+            if (col.input_type === "select" && col.source_file) {
+              await loadOptionsForTableColumn(col);
+            }
+          }
+        }
+        return;
+      }
+      try {
+        const response = await fetch(field.source_file);
+        let items = await response.json();
+        if (
+          Array.isArray(field.depends_on) &&
+          Array.isArray(field.filter_fields) &&
+          field.depends_on.length === field.filter_fields.length
+        ) {
+          let allDepsSelected = true;
+          field.depends_on.forEach(depKey => {
+            const depValue = getGlobalValue(depKey);
+            if (!depValue) { allDepsSelected = false; }
+          });
+          if (!allDepsSelected) {
+            items = [];
+          } else {
+            field.depends_on.forEach((depKey, i) => {
+              const filKey = field.filter_fields[i];
+              const depValue = getGlobalValue(depKey);
+              if (depValue) {
+                items = items.filter(it => String(it[filKey]) === String(depValue));
+              }
+            });
+          }
+        }
+        if (Array.isArray(field.columns)) {
+          for (const col of field.columns) {
+            if (col.input_type === "select" && col.source_file) {
+              await loadOptionsForTableColumn(col);
+            }
+          }
+        }
+        field.rows = items.map(item => {
+          const rowData = {};
+          field.columns.forEach(col => {
+            if (col.input_type === "checkbox") {
+              rowData[col.name] = false;
+            } else if (col.input_type === "radio") {
+              rowData[col.name] = "";
+            } else if (col.input_type === "range") {
+              rowData[col.name] = (typeof col.value !== "undefined") ? col.value : col.range_min || 1;
+            } else {
+              rowData[col.name] = item[col.name] || item[capitalize(col.name)] || "";
+            }
+          });
+          return rowData;
+        });
+      } catch (error) {
+        console.error("Errore nel caricamento righe tabella:", error);
+      }
+    }
+    /****************************************************
+     * POPOLAZIONE DEI CAMPIP (RICORSIVO)
+     ****************************************************/
+    async function recursivePopulateFields(data) {
+      for (const key in data) {
+        if (typeof data[key] === "object" && data[key] !== null) {
+          const field = data[key];
+          if (field.hasOwnProperty("visible") && field.visible === false) continue;
+          if (field.input_type === "select" && field.source_file) {
+            await loadOptionsForSelect(field);
+          }
+          if (field.input_type === "table") {
+            await loadRowsForTable(field);
+          }
+          await recursivePopulateFields(field);
+        }
+      }
+    }
+    async function populateFields(data) {
+      await recursivePopulateFields(data);
+    }
+    /****************************************************
+     * GENERA SIDEBAR
+     ****************************************************/
+    function generateSidebar() {
+      const sidebarNav = document.getElementById("sidebar-nav");
+      sidebarNav.innerHTML = "";
+      const backLink = document.createElement("a");
+      backLink.href = "index.html";
+      backLink.id = "backLink";
+      backLink.textContent = "Torna alla lista questionari";
+      backLink.style.color = "gold";
+      backLink.style.fontWeight = "bold";
+      backLink.style.display = "inline-block";
+      backLink.style.marginBottom = "15px";
+      backLink.addEventListener("click", handleBackToList);
+      sidebarNav.appendChild(backLink);
+      buildSidebarLevel(jsonData, sidebarNav, 1);
+    }
+    function buildSidebarLevel(currentNode, parentElement, level = 1) {
+      const ul = document.createElement("ul");
+      Object.keys(currentNode).forEach(key => {
+        const node = currentNode[key];
+        if (!node || typeof node !== "object") return;
+        if (node.visible === false) return;
+        if (node.input_type) return;
+        const childNodes = Object.keys(node).filter(k => {
+          const sub = node[k];
+          return sub && typeof sub === "object" && sub.label;
+        });
+        if (childNodes.length === 0 && !node.label) return;
+        const li = document.createElement("li");
+        if (level === 1) {
+          li.style.color = "white";
+          li.style.fontWeight = "bold";
+        } else if (level === 2) {
+          li.style.color = "#aaf0d1";
+        } else {
+          li.style.color = "#ffffffcc";
+        }
+        const a = document.createElement("a");
+        a.href = `#${key}`;
+        a.textContent = node.label || key;
+        a.style.textDecoration = "none";
+        a.style.display = "inline-block";
+        li.appendChild(a);
+        buildSidebarLevel(node, li, level + 1);
+        ul.appendChild(li);
+      });
+      if (ul.childNodes.length > 0) {
+        parentElement.appendChild(ul);
+      }
+    }
+    /****************************************************
+     * GENERA FORM
+     ****************************************************/
+    function generateForm(data, container) {
+      Object.keys(data).forEach(key => {
+        const field = data[key];
+        if (field.hasOwnProperty("visible") && field.visible === false) return;
+        if (field && field.input_type) {
+          const fieldElement = createFieldElement(field, key, data);
+          if (fieldElement) container.appendChild(fieldElement);
+        } else if (typeof field === "object" && field !== null) {
+          const section = document.createElement("fieldset");
+          section.id = key;
+          const legend = document.createElement("legend");
+          legend.innerText = field.label || key;
+          if (jsonData.informazioni_compilazione && jsonData.informazioni_compilazione.moderatore && jsonData.informazioni_compilazione.moderatore.email) {
+            const moderatorEmail = jsonData.informazioni_compilazione.moderatore.email;
+            const subject = encodeURIComponent(legend.innerText);
+            const body = encodeURIComponent("Gentile Moderatore,\n\nHo delle domande riguardo alla sezione \"" + legend.innerText + "\" del questionario.\n\nCordiali saluti,");
+            const mailLink = document.createElement("a");
+            mailLink.href = "mailto:" + moderatorEmail + "?subject=" + subject + "&body=" + body;
+            mailLink.innerHTML = "✉️";
+            mailLink.style.cssText = "float: right; text-decoration: none; margin-left: 10px;";
+            mailLink.title = "Contatta il Moderatore per " + legend.innerText;
+            legend.appendChild(mailLink);
+          }
+          section.appendChild(legend);
+          generateForm(field, section);
+          container.appendChild(section);
+        }
+      });
+      updateInputAvailability();
+    }
+    function createFieldElement(fieldData, key, parentObj) {
+      if (fieldData.hasOwnProperty("visible") && fieldData.visible === false) return null;
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("form-group");
+      wrapper.id = key;
+      if (fieldData.label) {
+        const label = document.createElement("label");
+        label.innerText = fieldData.label;
+        label.setAttribute("for", key);
+        wrapper.appendChild(label);
+      }
+      let inputElement;
+      switch (fieldData.input_type) {
+        case "range":
+          inputElement = createRangeElement(fieldData, key, parentObj);
+          break;
+        case "textarea":
+        case "text":
+        case "number":
+        case "date":
+        case "datetime-local":
+          inputElement = createBasicInput(fieldData, key, parentObj);
+          break;
+        case "radio":
+          inputElement = createRadioGroup(fieldData, key, parentObj);
+          break;
+        case "checkbox":
+          if (fieldData.options && fieldData.options.length > 0) {
+            inputElement = createCheckboxGroup(fieldData, key, parentObj);
+          } else {
+            inputElement = createSingleCheckbox(fieldData, key, parentObj);
+          }
+          break;
+        case "select":
+          inputElement = createSelectElement(fieldData, key, parentObj);
+          break;
+        case "table":
+          inputElement = createTableElement(fieldData, key, parentObj);
+          break;
+        default:
+          console.warn(`Tipo di campo non supportato: ${fieldData.input_type}`);
+          return null;
+      }
+      wrapper.appendChild(inputElement);
+      return wrapper;
+    }
+    function createBasicInput(fieldData, key, parentObj) {
+      let element;
+      if (fieldData.input_type === "textarea") {
+        element = document.createElement("textarea");
+        element.classList.add("large-textarea");
+      } else {
+        element = document.createElement("input");
+        element.type = fieldData.input_type;
+      }
+      element.id = key;
+      element.value = fieldData.value || "";
+      if (fieldData.readOnly) element.readOnly = true;
+      element.addEventListener("input", () => {
+        parentObj[key].value = element.value;
+        isDirty = true;
+        updateJsonOutput();
+        scheduleAutoSave();
+      });
+      return element;
+    }
+    function createRadioGroup(fieldData, key, parentObj) {
+      const container = document.createElement("div");
+      if (fieldData.options) {
+        fieldData.options.forEach(option => {
+          const label = document.createElement("label");
+          label.classList.add("radio-label");
+          const radio = document.createElement("input");
+          radio.type = "radio";
+          radio.name = key;
+          radio.value = option;
+          radio.checked = fieldData.value === option;
+          radio.addEventListener("change", () => {
+            parentObj[key].value = option;
+            updateJsonOutput();
+            scheduleAutoSave();
+          });
+          label.appendChild(radio);
+          label.appendChild(document.createTextNode(option));
+          container.appendChild(label);
+        });
+      }
+      return container;
+    }
+    function createSingleCheckbox(fieldData, key, parentObj) {
+      const container = document.createElement("div");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.id = key;
+      checkbox.checked = !!fieldData.value;
+      checkbox.addEventListener("change", () => {
+        parentObj[key].value = checkbox.checked;
+        updateJsonOutput();
+        scheduleAutoSave();
+      });
+      container.appendChild(checkbox);
+      return container;
+    }
+    function createCheckboxGroup(fieldData, key, parentObj) {
+      const container = document.createElement("div");
+      container.classList.add("checkbox-group");
+      if (!Array.isArray(fieldData.value)) { 
+        fieldData.value = [];
+      }
+      fieldData.options.forEach(option => {
+        const label = document.createElement("label");
+        label.classList.add("checkbox-label");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = key;
+        checkbox.value = option;
+        checkbox.checked = fieldData.value.includes(option);
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) {
+            if (!fieldData.value.includes(option)) { 
+              fieldData.value.push(option); 
+            }
+          } else {
+            fieldData.value = fieldData.value.filter(v => v !== option);
+          }
+          updateJsonOutput();
+          scheduleAutoSave();
+        });
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(option));
+        container.appendChild(label);
+      });
+      return container;
+    }
+    function createSelectElement(fieldData, key, parentObj) {
+      const select = document.createElement("select");
+      select.id = key;
+      if (fieldData.options) {
+        let renderedOptions = "";
+        if (typeof fieldData.options[0] === "object") {
+          renderedOptions = fieldData.options
+            .map(opt => {
+              const selected = String(fieldData.value) === String(opt.value) ? "selected" : "";
+              return `<option value="${opt.value}" ${selected}>${opt.text}</option>`;
+            })
+            .join("");
+        } else {
+          renderedOptions = fieldData.options
+            .map(opt => {
+              const selected = String(fieldData.value) === String(opt) ? "selected" : "";
+              return `<option value="${opt}" ${selected}>${opt}</option>`;
+            })
+            .join("");
+        }
+        select.innerHTML = renderedOptions;
+      }
+      select.value = fieldData.value || "";
+      select.addEventListener("change", async () => {
+        parentObj[key].value = select.value;
+        if (key === "vicariato" || key === "comunità_pastorale") {
+          const vicValue = jsonData.informazioni_compilazione.vicariato?.value;
+          const compValue = jsonData.informazioni_compilazione["comunità_pastorale"]?.value;
+          if (vicValue && compValue) {
+            const exists = await checkDuplicateQuestionnaire(vicValue, compValue);
+            if (exists) {
+              const proceed = confirm("Esiste già un questionario per questa combinazione.\nVuoi proseguire comunque?");
+              if (!proceed) {
+                select.value = "";
+                parentObj[key].value = "";
+                updateJsonOutput();
+                return;
+              }
+            }
+          }
+          if (key === "comunità_pastorale") {
+            await populateModeratore();
+          }
+          await populateFields(jsonData);
+          const container = document.getElementById("form-container");
+          container.innerHTML = "";
+          generateForm(jsonData, container);
+          if (key === "vicariato" || key === "comunità_pastorale") {
+            updateInputAvailability();
+          }
+          updateDependentTables();
+        }
+        updateJsonOutput();
+        scheduleAutoSave();
+      });
+      return select;
+    }
+    function createRangeElement(fieldData, key, parentObj) {
+      const container = document.createElement("div");
+      const input = document.createElement("input");
+      input.type = "range";
+      input.id = key;
+      const min = typeof fieldData.range_min === "number" ? fieldData.range_min : 1;
+      const max = typeof fieldData.range_max === "number" ? fieldData.range_max : 5;
+      input.min = min;
+      input.max = max;
+      input.value = fieldData.value != null ? fieldData.value : min;
+      const labelsMap = fieldData.range_labels || {};
+      const output = document.createElement("span");
+      output.classList.add("range-output");
+      function updateOutput(val) {
+        output.innerText = `${val} (${labelsMap[val.toString()] || "Valore: " + val})`;
+      }
+      updateOutput(input.value);
+      input.addEventListener("input", () => {
+        fieldData.value = parseInt(input.value, 10);
+        updateOutput(fieldData.value);
+        updateJsonOutput();
+        scheduleAutoSave();
+      });
+      container.appendChild(input);
+      container.appendChild(document.createTextNode(" "));
+      container.appendChild(output);
+      return container;
+    }
+    function createTableElement(fieldData, key, parentObj) {
+      const container = document.createElement("div");
+      container.id = key;
+      const table = document.createElement("table");
+      table.id = key;
+      table.classList.add("compact-table");
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
+      fieldData.columns.forEach((column, colIndex) => {
+        const th = document.createElement("th");
+        const headerContainer = document.createElement("div");
+        headerContainer.style.display = "flex";
+        headerContainer.style.alignItems = "center";
+        headerContainer.style.justifyContent = "space-between";
+        const labelSpan = document.createElement("span");
+        labelSpan.innerText = column.label;
+        labelSpan.style.cursor = "pointer";
+        labelSpan.addEventListener("click", () => { 
+          sortTableByColumn(table, colIndex, column); 
+        });
+        headerContainer.appendChild(labelSpan);
+        if (column.input_type === "checkbox") {
+          const bulkCheckbox = document.createElement("input");
+          bulkCheckbox.type = "checkbox";
+          bulkCheckbox.style.marginLeft = "5px";
+          bulkCheckbox.addEventListener("change", () => {
+            fieldData.rows.forEach(row => { row[column.name] = bulkCheckbox.checked; });
+            const tbody = table.querySelector("tbody");
+            Array.from(tbody.rows).forEach(r => {
+              const cell = r.cells[colIndex];
+              const input = cell.querySelector("input[type='checkbox']");
+              if (input) { input.checked = bulkCheckbox.checked; }
+            });
+            updateJsonOutput();
+            scheduleAutoSave();
+          });
+          headerContainer.appendChild(bulkCheckbox);
+        } else {
+          const bulkBtn = document.createElement("button");
+          bulkBtn.innerText = "Aggiorna tutti";
+          bulkBtn.style.fontSize = "0.8em";
+          bulkBtn.style.marginLeft = "5px";
+          bulkBtn.addEventListener("click", () => {
+            const nuovoValore = prompt(`Inserisci il nuovo valore per tutte le righe della colonna "${column.label}"`);
+            if (nuovoValore !== null) {
+              fieldData.rows.forEach(row => {
+                if (column.input_type === "range" || column.input_type === "number") {
+                  row[column.name] = Number(nuovoValore);
+                } else {
+                  row[column.name] = nuovoValore;
+                }
+              });
+              const tbody = table.querySelector("tbody");
+              Array.from(tbody.rows).forEach(r => {
+                const cell = r.cells[colIndex];
+                const input = cell.querySelector("input, select");
+                if (input) { input.value = nuovoValore; }
+              });
+              updateJsonOutput();
+              scheduleAutoSave();
+            }
+          });
+          headerContainer.appendChild(bulkBtn);
+        }
+        th.appendChild(headerContainer);
+        headerRow.appendChild(th);
+      });
+      const actionTh = document.createElement("th");
+      actionTh.innerText = "Azioni";
+      headerRow.appendChild(actionTh);
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+      const tbody = document.createElement("tbody");
+      if (Array.isArray(fieldData.rows)) {
+        fieldData.rows.forEach(rowData => {
+          const row = createTableRow(rowData, fieldData.columns, tbody, key, parentObj, fieldData);
+          tbody.appendChild(row);
+        });
+      }
+      table.appendChild(tbody);
+      container.appendChild(table);
+      if (fieldData.allowAddRows !== false) {
+        const addButton = document.createElement("button");
+        addButton.innerText = "Aggiungi Riga";
+        addButton.onclick = () => {
+          const newRowData = {};
+          fieldData.columns.forEach(col => {
+            if (col.input_type === "checkbox") {
+              newRowData[col.name] = false;
+            } else if (col.input_type === "range") {
+              newRowData[col.name] = (col.value !== undefined) ? col.value : (col.range_min || 1);
+            } else {
+              newRowData[col.name] = "";
+            }
+          });
+          fieldData.rows.push(newRowData);
+          fieldData.__manualModified = true;
+          const newRow = createTableRow(newRowData, fieldData.columns, tbody, key, parentObj, fieldData);
+          tbody.appendChild(newRow);
+          console.log("Nuova riga aggiunta:", newRowData);
+          updateJsonOutput();
+          scheduleAutoSave();
+        };
+        container.appendChild(addButton);
+      }
+      return container;
+    }
+    function sortTableByColumn(table, colIndex, columnDef) {
+      const tbody = table.querySelector("tbody");
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+      rows.sort((a, b) => {
+        const aCell = a.cells[colIndex];
+        const bCell = b.cells[colIndex];
+        let aValue, bValue;
+        if (columnDef.input_type === "checkbox") {
+          aValue = aCell.querySelector("input[type='checkbox']").checked ? 1 : 0;
+          bValue = bCell.querySelector("input[type='checkbox']").checked ? 1 : 0;
+        } else if (columnDef.input_type === "range" || columnDef.input_type === "number") {
+          aValue = Number(aCell.querySelector("input")?.value || 0);
+          bValue = Number(bCell.querySelector("input")?.value || 0);
+        } else if (columnDef.input_type === "select") {
+          aValue = aCell.querySelector("select")?.value || "";
+          bValue = bCell.querySelector("select")?.value || "";
+        } else {
+          aValue = aCell.querySelector("input")?.value || aCell.innerText;
+          bValue = bCell.querySelector("input")?.value || bCell.innerText;
+        }
+        if (aValue < bValue) return -1;
+        if (aValue > bValue) return 1;
+        return 0;
+      });
+      rows.forEach(r => tbody.appendChild(r));
+    }
+    function createTableRow(rowData, columns, tbody, key, parentObj, tableFieldData) {
+      const row = document.createElement("tr");
+      columns.forEach(column => {
+        const cell = document.createElement("td");
+        let input;
+        if (column.name === "Nome_Parrocchia" &&
+            tableFieldData.depends_on &&
+            tableFieldData.depends_on.includes("parrocchie")) {
+          input = document.createElement("select");
+          let parOptions = [];
+          if (jsonData.informazioni_compilazione &&
+              jsonData.informazioni_compilazione.parrocchie &&
+              Array.isArray(jsonData.informazioni_compilazione.parrocchie.rows)) {
+            parOptions = jsonData.informazioni_compilazione.parrocchie.rows
+              .map(r => r.Nome_Parrocchia)
+              .filter(opt => opt && opt.trim() !== "");
+            parOptions = [...new Set(parOptions)];
+          }
+          const placeholderOption = document.createElement("option");
+          placeholderOption.value = "";
+          placeholderOption.textContent = "Seleziona Parrocchia...";
+          input.appendChild(placeholderOption);
+          const globalOption = document.createElement("option");
+          globalOption.value = "comunità pastorale";
+          globalOption.textContent = "Comunità Pastorale";
+          if (rowData[column.name] === "comunità pastorale") {
+            globalOption.selected = true;
+          }
+          input.appendChild(globalOption);
+          parOptions.forEach(opt => {
+            const optionEl = document.createElement("option");
+            optionEl.value = opt;
+            optionEl.textContent = opt;
+            if (rowData[column.name] === opt) {
+              optionEl.selected = true;
+            }
+            input.appendChild(optionEl);
+          });
+          input.addEventListener("change", () => {
+            rowData[column.name] = input.value;
+            if (input.value === "comunità pastorale") {
+              rowData["ID_Parrocchia"] = "ALL";
+            } else {
+              rowData["ID_Parrocchia"] = null;
+            }
+            updateJsonOutput();
+            scheduleAutoSave();
+          });
+          cell.appendChild(input);
+        }
+        else {
+          if (column.input_type === "checkbox") {
+            input = document.createElement("input");
+            input.type = "checkbox";
+            input.checked = !!rowData[column.name];
+            input.addEventListener("change", () => {
+              rowData[column.name] = input.checked;
+              updateJsonOutput();
+              scheduleAutoSave();
+              if (key === "parrocchie") {
+                updateDependentTables();
+              }
+            });
+            cell.appendChild(input);
+          } else if (column.input_type === "radio") {
+            input = document.createElement("div");
+            column.options.forEach(opt => {
+              const label = document.createElement("label");
+              label.style.marginRight = "8px";
+              const radio = document.createElement("input");
+              radio.type = "radio";
+              radio.name = `row-radio-${column.name}-${Math.random()}`;
+              radio.value = opt;
+              radio.checked = (rowData[column.name] === opt);
+              radio.addEventListener("change", () => {
+                rowData[column.name] = opt;
+                updateJsonOutput();
+                scheduleAutoSave();
+              });
+              label.appendChild(radio);
+              label.appendChild(document.createTextNode(opt));
+              input.appendChild(label);
+            });
+            cell.appendChild(input);
+          } else if (column.input_type === "range") {
+            input = document.createElement("input");
+            input.type = "range";
+            input.min = typeof column.range_min === "number" ? column.range_min : 1;
+            input.max = typeof column.range_max === "number" ? column.range_max : 5;
+            input.value = rowData[column.name] || column.range_min || 1;
+            const labelsMap = column.range_labels || {};
+            const output = document.createElement("span");
+            output.style.marginLeft = "6px";
+            function updateRangeOutput(val) {
+              output.innerText = `${val} (${labelsMap[val.toString()] || "Valore: " + val})`;
+            }
+            updateRangeOutput(input.value);
+            input.addEventListener("input", () => {
+              rowData[column.name] = parseInt(input.value, 10);
+              updateRangeOutput(input.value);
+              updateJsonOutput();
+              scheduleAutoSave();
+            });
+            cell.appendChild(input);
+            cell.appendChild(output);
+          } else if (column.input_type === "select") {
+            input = document.createElement("select");
+            if (Array.isArray(column.options)) {
+              column.options.forEach(opt => {
+                const optionEl = document.createElement("option");
+                if (typeof opt === "string") {
+                  optionEl.value = opt;
+                  optionEl.textContent = opt;
+                } else if (typeof opt === "object") {
+                  optionEl.value = opt.value;
+                  optionEl.textContent = opt.text;
+                }
+                input.appendChild(optionEl);
+              });
+            }
+            input.value = rowData[column.name] || "";
+            input.addEventListener("change", () => {
+              rowData[column.name] = input.value;
+              updateJsonOutput();
+              scheduleAutoSave();
+            });
+            cell.appendChild(input);
+          } else {
+            input = document.createElement("input");
+            input.type = column.input_type || "text";
+            input.value = rowData[column.name] || "";
+            input.addEventListener("input", () => {
+              rowData[column.name] = input.value;
+              updateJsonOutput();
+              scheduleAutoSave();
+              if (key === "parrocchie") {
+                updateDependentTables();
+              }
+            });
+            cell.appendChild(input);
+          }
+        }
+        row.appendChild(cell);
+      });
+      const removeCell = document.createElement("td");
+      if (tableFieldData.allowRemoveRows !== false) {
+        const removeButton = document.createElement("button");
+        removeButton.innerText = "❌";
+        removeButton.onclick = () => {
+          tbody.removeChild(row);
+          parentObj[key].rows = parentObj[key].rows.filter(r => r !== rowData);
+          parentObj[key].__manualModified = true;
+          updateJsonOutput();
+          scheduleAutoSave();
+          if (key === "parrocchie") {
+            updateDependentTables();
+          }
+        };
+        removeCell.appendChild(removeButton);
+      }
+      row.appendChild(removeCell);
+      console.log("Tabella:", key, "rowData:", rowData);
+      return row;
+    }
+    /****************************************************
+     * UPDATE JSON & SALVA SU SUPABASE
+     ****************************************************/
+    function getDocId() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const idFromUrl = urlParams.get("id");
+      return idFromUrl || (jsonData.questionario_id && jsonData.questionario_id.value) || generateUUID();
+    }
+    async function updateJsonOutput() {
+      const rawValues = extractValues(jsonData);
+      const valuesToSave = sanitizeValues(rawValues);
+      const jsonOutputEl = document.getElementById("json-output");
+      if (jsonOutputEl) {
+        jsonOutputEl.value = JSON.stringify(valuesToSave, null, 4);
+      }
+      if (isDirty && jsonData.datatime_ultima_modifica) {
+        jsonData.datatime_ultima_modifica.value = getItalianFormattedDate();
+        const lastModEl = document.getElementById("last-modification");
+        if (jsonData.datatime_ultima_modifica && jsonData.datatime_ultima_modifica.value) {
+          lastModEl.innerText = "Ultima modifica: " + jsonData.datatime_ultima_modifica.value;
+          lastModEl.style.backgroundColor = "lightgreen";
+          setTimeout(() => { lastModEl.style.backgroundColor = "#e1e1e1"; }, 3000);
+        }
+      }
+      if (currentMode !== "view") {
+        await saveToSupabase(valuesToSave);
+      }
+    }
+   
+    async function saveToSupabaseManualmente() {
+      await saveToSupabase();
+      updateJsonOutput();
+    }
+    function scheduleAutoSave() {
+      // Implementa debounce se necessario.
+    }
+    /****************************************************
+     * POPOLAZIONE MODERATORE
+     ****************************************************/
+    async function populateModeratore() {
+      const infoComp = jsonData.informazioni_compilazione;
+      if (!infoComp) return;
+      const comunitaField = infoComp["comunità_pastorale"];
+      const moderatoreField = infoComp.moderatore;
+      if (comunitaField && comunitaField.value) {
+        try {
+          const response = await fetch(comunitaField.source_file);
+          const communities = await response.json();
+          const selected = communities.find(
+            item =>
+              String(item[comunitaField.value_field]) === String(comunitaField.value) &&
+              String(item["ID_Vicariato"]) === String(getGlobalValue("vicariato"))
+          );
+          if (selected && selected.Moderatore) {
+            moderatoreField.value = selected.Moderatore;
+            moderatoreField.email = selected.Email || "";
+          } else {
+            moderatoreField.value = "";
+            moderatoreField.email = "";
+          }
+          updateJsonOutput();
+        } catch (error) {
+          console.error("Errore nel caricamento del file delle comunità:", error);
+        }
+      }
+    }
+    /****************************************************
+     * CHECK DUPLICATO
+     ****************************************************/
+    async function checkDuplicateQuestionnaire(vicariato, comunita) {
+      try {
+        const { data, error } = await supabase
+          .from('raw_questionari')
+          .select('data')
+          .eq('data.informazioni_compilazione.vicariato.value', vicariato)
+          .eq('data.informazioni_compilazione.comunità_pastorale.value', comunita);
+        if (error) {
+          console.error("Errore nella verifica duplicato:", error);
+          return false;
+        }
+        return data && data.length > 0;
+      } catch (error) {
+        console.error("Errore nella verifica duplicato:", error);
+        return false;
+      }
+    }
+    /****************************************************
+     * FUNZIONE DI FORMATTAMENTO DATA ITALIANA
+     ****************************************************/
+    function getItalianFormattedDate(date = new Date()) {
+      if (isNaN(date.getTime())) { 
+        console.error("Data non valida:", date);
+        date = new Date();
+      }
+      return date.toLocaleString('it-IT', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+    /****************************************************
+     * FUNZIONE loadQuestionario
+     ****************************************************/
+// Funzione di caricamento del questionario
+async function loadQuestionario() {
+  const urlParams = new URLSearchParams(window.location.search);
+  currentMode = urlParams.get("mode") || "new";
+  const id = urlParams.get("id");
+  await loadStrutturaTemplate();
+  if ((currentMode === "edit" || currentMode === "view") && id) {
+    try {
+        const { data, error } = await supabaseClient
+  .from('raw_questionari')
+  .select('data')
+  .eq('data->>questionario_id', id)
+  .single();
+      if (error || !data) {
+        alert("Questionario non trovato!");
+        jsonData = jsonDataTemplate;
+      } else {
+        const savedData = data.data;
+        mergeData(jsonDataTemplate, savedData);
+        jsonData = jsonDataTemplate;
+        if (savedData.questionario_id) {
+          jsonData.questionario_id = savedData.questionario_id;
+        }
+      }
+    } catch (error) {
+      console.error("Errore nel caricamento del questionario:", error);
+      jsonData = jsonDataTemplate;
+    }
+  } else {
+    jsonData = jsonDataTemplate;
+    if (jsonData.questionario_id) {
+      jsonData.questionario_id.value = generateUUID();
+    }
+    if (jsonData.DateOrecreazione) {
+      jsonData.DateOrecreazione.value = getItalianFormattedDate();
+    }
+    if (jsonData.DateOroltimaModifica) {
+      jsonData.DateOroltimaModifica.value = getItalianFormattedDate();
+    }
+  }
+  await populateFields(jsonData);
+  if (currentMode === "view") {
+    setFormReadOnly();
+  }
+}
+    /****************************************************
+     * FUNZIONE setFormReadOnly
+     ****************************************************/
+    function setFormReadOnly() {
+      const container = document.getElementById("form-container");
+      container.style.pointerEvents = "none";
+      container.style.userSelect = "text";
+      container.querySelectorAll("input, textarea").forEach(el => {
+        el.setAttribute("readonly", "true");
+        el.style.backgroundColor = "#f5f5f5";
+        el.style.cursor = "not-allowed";
+      });
+      container.querySelectorAll("select, button").forEach(el => {
+        el.setAttribute("disabled", "true");
+        el.style.backgroundColor = "#f5f5f5";
+        el.style.cursor = "not-allowed";
+      });
+      const saveButton = document.querySelector("button[onclick='saveToSupabaseManualmente()']");
+      if (saveButton) {
+        saveButton.style.display = "none";
+      }
+    }
+    /****************************************************
+     * INITIALIZE PAGE
+     ****************************************************/
+    async function initialize() {
+      await loadQuestionario();
+      generateSidebar();
+      const container = document.getElementById("form-container");
+      generateForm(jsonData, container);
+      const infoComp = jsonData.informazioni_compilazione;
+      if (infoComp && infoComp["comunità_pastorale"] && infoComp["comunità_pastorale"].value) {
+        await populateModeratore();
+      }
+      if (currentMode !== "view") {
+        // updateJsonOutput();
+      }
+    }
+    window.onload = initialize;
+  </script>
+  <script>
+    // ================================================================
+    // ALLOCATION E DEALLOCATION (funzioni non più utilizzate con Supabase)
+    // ================================================================
+  </script>
+</body>
+</html>

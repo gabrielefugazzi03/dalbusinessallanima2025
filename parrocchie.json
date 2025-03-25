@@ -1,0 +1,2510 @@
+[
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Cattedrale"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "San Francesco"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "San Paolo"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "San Pietro"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "San Savino"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Sant'Anna"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Sant'Antonino"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Santa Maria di Gariverto"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "San Giovanni e Santa Brigida"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "San Sisto"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Santo Sepolcro"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Sant'Eufemia"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Santa Teresa"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Sacra Famiglia"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Sant'Antonio a Trebbia"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Santi Angeli Custodi"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Preziosissimo Sangue"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "San Corrado"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "San Vittore (Besurica)"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Nostra Signora di Lourdes"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Santissima Trinità"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA7",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Pittolo"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA7",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "San Bonico"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA7",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "San Giuseppe Operaio"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Borghetto"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Corpus Domini"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Le Mose"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Mortizza"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Mucinasso"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Roncaglia"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "San Lazzaro e San Vincenzo de'Paoli"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Santa Franca"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Santa Maria del Suffragio"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Gossolengo"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Quarto"
+    },
+    {
+        "ID_Vicariato": "1",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Settima"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Baselica Duce"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Fiorenzuola"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Riomezzano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "San Protaso"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Bersano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Besenzone"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Chiavenna Landi"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Cortemaggiore"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Mercore"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "San Martino in Olza"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "San Pietro in Cerro"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Caorso"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Fossadello"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Muradolo"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Polignano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Roncarolo"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Zerbio"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Santa Teresa Benedetta della Croce"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Badagnano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Carpaneto"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Celleri"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Chero"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Ciriano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Magnano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Montanaro"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Rezzano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Travazzano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Veggiola"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Zena"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Alseno"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Bacedasco Alto"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Bacedasco Basso"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Castelnuovo Fogliani"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Chiaravalle della Colomba"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Cortina Vecchia"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Lusurasco"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Vigoleno"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA7",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Castell'Arquato"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA7",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Sant'Antonio in Costa Orzata"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA7",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "San Lorenzo"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA7",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Vigolo Marchese"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Castellana"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Gropparello"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Groppovisdomo"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Gusano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Montechino"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Obolo"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA8",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Sariano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Antognano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Bore"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Borla"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Castelletto Val Tolla"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Chiavenna Rocchetta"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Diolo"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Lugagnano"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Metti"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Monastero Val Tolla"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Montezago"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Morfasso"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Pedina"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Pozzolo"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Prato Ottesola"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Rustigazzo"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "16",
+        "Nome_Parrocchia": "San Michele Val Tolla"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "17",
+        "Nome_Parrocchia": "Settesorelle"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "18",
+        "Nome_Parrocchia": "Sperongia"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "19",
+        "Nome_Parrocchia": "Valeia"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "20",
+        "Nome_Parrocchia": "Vernasca"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "21",
+        "Nome_Parrocchia": "Vezzolacca"
+    },
+    {
+        "ID_Vicariato": "2",
+        "ID_Comunità": "CPA9",
+        "ID_Parrocchia": "22",
+        "Nome_Parrocchia": "Villa Casali"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Altoè"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Ivaccari-San Martino al Nure"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Maiano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Podenzano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "San Polo"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Turro"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Verano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Muradello"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Paderna"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Pontenure"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Valconasso"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Centovera"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Corneliano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Godi"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Rizzolo"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Ronco"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "San Damiano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "San Giorgio"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Tollara"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Viustino"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Albarola"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Bicchignano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Carmiano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Cassano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Castione"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Chiulano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Folignano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Grazzano Visconti"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Ponte dell'Olio"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Riva"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Sarmata"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Torrano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Veano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Vigolzone"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Villò"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Bettola San Bernardino"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CAP5",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Bettola San Giovanni"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Bramaiano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CAP5",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Calenzano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Ebbio"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Groppo Ducale"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CAP5",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Leggio"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Missano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CAP5",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Padri"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Pradello"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Recesio"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CAP5",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Revigozzo"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Roncovero"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CAP5",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Rossoreggio"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA5",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Vigolo Val Nure"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": " Boccolo Noce"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Brugneto"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Casaldonato"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Cassimoreno"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Castelcanafurone"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Centenaro"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Cerreto Rossi"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Cogno San Bassano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Cogno San Saviano"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Curletti"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Farini"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Ferriere"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Gambaro"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Grodone e Solaro"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Groppallo"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "16",
+        "Nome_Parrocchia": "Mareto"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "17",
+        "Nome_Parrocchia": "Metteglia e Ciregna"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "18",
+        "Nome_Parrocchia": "Montereggio"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "19",
+        "Nome_Parrocchia": "Olmo"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "20",
+        "Nome_Parrocchia": "Pradovera"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "21",
+        "Nome_Parrocchia": "Retorto"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "22",
+        "Nome_Parrocchia": "Rocca Ferriere"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "23",
+        "Nome_Parrocchia": "Rompeggio"
+    },
+    {
+        "ID_Vicariato": "3",
+        "ID_Comunità": "CPA6",
+        "ID_Parrocchia": "24",
+        "Nome_Parrocchia": "San Gregorio-Chiappeto"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Boscone Cusani"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Calendasco"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Centora"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Cotrebbia"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Rottofreno"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "San Nicolò"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Santimento "
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Agazzano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Campremoldo Sotto"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Campremoldo Sopra"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Cantone"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Casaliggio"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Castelletto "
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Gazzola"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Gragnano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Grintorto"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Groppo Arcelli"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Momeliano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Montebolzone"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Montecanino"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Monteventano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Monticello"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "16",
+        "Nome_Parrocchia": "Pilastro"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "17",
+        "Nome_Parrocchia": "Piozzano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "18",
+        "Nome_Parrocchia": "Pomaro"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "19",
+        "Nome_Parrocchia": "Rezzanello"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "20",
+        "Nome_Parrocchia": "Rivalta"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "21",
+        "Nome_Parrocchia": "San Gabriele"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "22",
+        "Nome_Parrocchia": "San Nazzaro Pavarano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "23",
+        "Nome_Parrocchia": "San Pietro in Tranquiniano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "24",
+        "Nome_Parrocchia": "Sarturano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "25",
+        "Nome_Parrocchia": "Tavernago"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "26",
+        "Nome_Parrocchia": "Tuna"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "27",
+        "Nome_Parrocchia": "Verdeto"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "28",
+        "Nome_Parrocchia": "Vidiano Soprano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Bassano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Bobbiano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Caverzago"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Denavolo"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Fellino"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Niviano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Ottavello"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Pieve Dugliara"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Pillori"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Quadrelli"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Rallio"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Rivergaro"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Roveleto Landi"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Statto"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Suzzano"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "16",
+        "Nome_Parrocchia": "Travo"
+    },
+    {
+        "ID_Vicariato": "4",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "17",
+        "Nome_Parrocchia": "Viserano"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Agazzino"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Castel San Giovanni"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Creta"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Fontana Pradosa"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Ganaghello"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Pievetta"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Sarmato"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Albareto"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Bilegno"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Borgonovo"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Breno"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Castelnovo V.T."
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Fabbiano"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Fornello"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Mottaziana"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Seminò"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Vicobarone"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Vicomarino"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Ziano"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Arcello"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Caprile e Busseto"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Casanova V.T."
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Castellaro Arcelli"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Cicogni"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Lazzarello"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Montalbo"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Montemartino"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Olgisio"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Pecorara"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Pianello"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Roccapulzana"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Strà"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Tassara"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Caminata"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Corano"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Genepreto"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Nibbiano V.T."
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Pieve Stadera"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Sala Mendelli"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Trebecco"
+    },
+    {
+        "ID_Vicariato": "5",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Trevozzo"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Aglio"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Bobbio Concattedrale"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Bobbio San Colombano"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Castagnola"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Cattaragna"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Ceci"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Coli"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Dezza"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Marsaglia"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Mezzano Scotti"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Ozzola"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Peli"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Perino"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Pieve di Montarsolo"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Rossopiana"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "16",
+        "Nome_Parrocchia": "San Cristoforo"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "17",
+        "Nome_Parrocchia": "Santa Maria"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "18",
+        "Nome_Parrocchia": "Scabiazza"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "19",
+        "Nome_Parrocchia": "Vaccarezza"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "20",
+        "Nome_Parrocchia": "Villanova V.N."
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Casamatti"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Gabbione"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Menconico"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Monteforte"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Pometo"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Romagnese"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Ruino"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "San Pietro Casasco"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Sant'Albano"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Valverde"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Alpe di Gorreto"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Barchi"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Bogli"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Campi di Ottone"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Canale"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Carisasca"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Casanova "
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Casoni"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Cerignale"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Cerreto Rossi"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Fabbrica"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Fontanarossa"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Fontanigorda"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Gorreto"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Gramizzola"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "16",
+        "Nome_Parrocchia": "Loco"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "17",
+        "Nome_Parrocchia": "Orezzoli"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "18",
+        "Nome_Parrocchia": "Ottone"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "19",
+        "Nome_Parrocchia": "Ottone Soprano"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "20",
+        "Nome_Parrocchia": "Pej"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "21",
+        "Nome_Parrocchia": "Pietranera"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "22",
+        "Nome_Parrocchia": "Rovegnano"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "23",
+        "Nome_Parrocchia": "Selva"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "24",
+        "Nome_Parrocchia": "Traschio"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "25",
+        "Nome_Parrocchia": "Zerba"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Allegrezze"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Alpepiana "
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Alpicella"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Amborzasco"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Ascona"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Brignole"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Cabanne"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Magnasco"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Pievetta"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Priosa"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Rezzoaglio"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Santo Stefano d'Aveto"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Torrio"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Vicosoprano"
+    },
+    {
+        "ID_Vicariato": "6",
+        "ID_Comunità": "CPA4",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Villanoce"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Alpe"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Barbigarezza"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Bedonia"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Calice"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Caneso"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Carniglia"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Casale Val Taro"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Casaleto"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Casalporino"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Case Fazzi"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Cereseto"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Chiesiola"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Compiano"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Cornolo"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Drusco"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "16",
+        "Nome_Parrocchia": "Illica"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "17",
+        "Nome_Parrocchia": "Isola"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "18",
+        "Nome_Parrocchia": "Masanti"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "19",
+        "Nome_Parrocchia": "Montarsiccio"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "20",
+        "Nome_Parrocchia": "Nociveglia"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "21",
+        "Nome_Parrocchia": "Romezzano"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "22",
+        "Nome_Parrocchia": "Santa Maria del Taro"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "23",
+        "Nome_Parrocchia": "Scopolo"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "24",
+        "Nome_Parrocchia": "Setterone"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "25",
+        "Nome_Parrocchia": "Spora"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "26",
+        "Nome_Parrocchia": "Strela"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "27",
+        "Nome_Parrocchia": "Strepeto"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "28",
+        "Nome_Parrocchia": "Tarsogno"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "29",
+        "Nome_Parrocchia": "Tasola"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA1",
+        "ID_Parrocchia": "30",
+        "Nome_Parrocchia": "Tornolo"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Baselica  "
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Belforte"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Borgo Val di Taro Sant'Antonino"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Borgo Val di Taro San Rocco"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Branzone"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Brunelli"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Cacciarasca"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Caffaraccia"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Campi di Ottone"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Codogno"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Folta e Tombeto"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Gorro"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Groppo e Boschetto"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Gusaliggio"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Mariano"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "16",
+        "Nome_Parrocchia": "Montegroppo"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "17",
+        "Nome_Parrocchia": "Pieve di Campi"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "18",
+        "Nome_Parrocchia": "Pontolo"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "19",
+        "Nome_Parrocchia": "Porcigatone"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "20",
+        "Nome_Parrocchia": "Rovinaglia"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "21",
+        "Nome_Parrocchia": "San Martino di Rivosecco"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "22",
+        "Nome_Parrocchia": "San Martino Valmozzola"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "23",
+        "Nome_Parrocchia": "San Pietro Canal Vona"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "24",
+        "Nome_Parrocchia": "San Quirico"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "25",
+        "Nome_Parrocchia": "San Siro"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "26",
+        "Nome_Parrocchia": "San Vincenzo"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "27",
+        "Nome_Parrocchia": "Tiedoli"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA2",
+        "ID_Parrocchia": "28",
+        "Nome_Parrocchia": "Valdena"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "1",
+        "Nome_Parrocchia": "Bardi"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "2",
+        "Nome_Parrocchia": "Boccolo Tassi"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "3",
+        "Nome_Parrocchia": "Casanova Val Ceno"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "4",
+        "Nome_Parrocchia": "Comune Stradella"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "5",
+        "Nome_Parrocchia": "Contile"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "6",
+        "Nome_Parrocchia": "Costageminiana"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "7",
+        "Nome_Parrocchia": "Credarola"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "8",
+        "Nome_Parrocchia": "Gravago"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "9",
+        "Nome_Parrocchia": "Grezzo"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "10",
+        "Nome_Parrocchia": "Pessola"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "11",
+        "Nome_Parrocchia": "Pietrarada"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "12",
+        "Nome_Parrocchia": "Pione"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "13",
+        "Nome_Parrocchia": "Rocca Nuova"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "14",
+        "Nome_Parrocchia": "Rocca Varsi"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "15",
+        "Nome_Parrocchia": "Santa Giustina Val Lecca"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "16",
+        "Nome_Parrocchia": "Tosca"
+    },
+    {
+        "ID_Vicariato": "7",
+        "ID_Comunità": "CPA3",
+        "ID_Parrocchia": "17",
+        "Nome_Parrocchia": "Varsi"
+    }
+]

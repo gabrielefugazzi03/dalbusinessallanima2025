@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Elenco Questionari</title>
+  <!-- Includi il Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+  <!-- Importa il font Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* RESET E BASE */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* BACKGROUND ANIMATO */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #333;
+      padding: 10px;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* CONTAINER PRINCIPALE */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+    /* TABLE-HEADER */
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    #dataIndicator {
+      background: rgba(0, 0, 0, 0.05);
+      padding: 12px 16px;
+      border-radius: 5px;
+      font-size: 0.9em;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    /* Pulsanti */
+    #newQuestionarioBtn, #downloadJsonBtn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      background: #ff6b6b;
+      color: #fff;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      margin-right: 10px;
+    }
+    #newQuestionarioBtn:hover, #downloadJsonBtn:hover {
+      background: #ff4757;
+      transform: translateY(-2px);
+    }
+    /* TABELLA */
+    table.compact-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+    table.compact-table th,
+    table.compact-table td {
+      border: 1px solid #ccc;
+      padding: 6px 10px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    table.compact-table th {
+      background-color: #f0f0f0;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    table.compact-table th:hover {
+      background-color: #e0e0e0;
+    }
+    table.compact-table tbody tr:nth-child(even) { background: #fafafa; }
+    table.compact-table tbody tr:hover { background: #f1f1f1; }
+    /* Filtri */
+    .filter-row input {
+      width: 90%;
+      padding: 4px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    .filter-row input:focus { border-color: #0984e3; outline: none; }
+    /* Icone */
+    .icon-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.4em;
+      margin: 0 5px;
+      color: #ff6b6b;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    .icon-button:hover { color: #ff4757; transform: scale(1.1); }
+    .status-icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      color: white;
+      cursor: default;
+    }
+    /* Modal */
+    #commentiModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background: #fff;
+      padding: 20px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      max-width: 400px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    #commentiModal h2 { margin-bottom: 10px; }
+    #commentiModalText { white-space: pre-wrap; margin-bottom: 15px; }
+    #closeModalBtn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      background: #3498db;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+    #closeModalBtn:hover { background: #2980b9; }
+  </style>
+</head>
+<body>
+  <!-- Modal per commenti revisore -->
+  <div id="commentiModal">
+    <h2>Commenti Revisore</h2>
+    <div id="commentiModalText"></div>
+    <button id="closeModalBtn" onclick="closeCommentiModal()">Chiudi</button>
+  </div>
+
+  <div class="container">
+    <h1>Elenco Questionari</h1>
+    <!-- Header -->
+    <div class="table-header">
+      <div>
+        <button id="newQuestionarioBtn">Nuovo questionario</button>
+        <button id="downloadJsonBtn" onclick="downloadJSON()">SCARICA</button>
+      </div>
+      <div id="dataIndicator">Caricamento...</div>
+    </div>
+
+    <table id="questionariTable" class="compact-table">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th data-key="questionario_id">ID Questionario</th>
+          <th data-key="informazioni_compilazione.vicariato">Vicariato</th>
+          <th data-key="informazioni_compilazione.comunità_pastorale">Comunità Pastorale</th>
+          <th data-key="informazioni_compilazione.parrocchie">Parrocchie</th>
+          <th data-key="studente_compilatore">Studente Compilatore</th>
+          <th data-key="datatime_ultima_modifica">Data Ultima Modifica</th>
+          <th>Completamento</th>
+          <th>Azioni</th>
+        </tr>
+        <tr class="filter-row">
+          <th><input type="text" class="column-filter" data-col-index="0" placeholder="Filtra..." /></th>
+          <th><input type="text" class="column-filter" data-col-index="1" placeholder="Filtra..." /></th>
+          <th><input type="text" class="column-filter" data-col-index="2" placeholder="Filtra..." /></th>
+          <th><input type="text" class="column-filter" data-col-index="3" placeholder="Filtra..." /></th>
+          <th><input type="text" class="column-filter" data-col-index="4" placeholder="Filtra..." /></th>
+          <th><input type="text" class="column-filter" data-col-index="5" placeholder="Filtra..." /></th>
+          <th><input type="text" class="column-filter" data-col-index="6" placeholder="Filtra..." /></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Le righe verranno generate dinamicamente -->
+      </tbody>
+    </table>
+  </div>
+  
+  <script>
+    // CONFIGURAZIONE SUPABASE
+    const supabaseUrl = 'https://arvsrkvnsnwxhjwklmws.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFydnNya3Zuc253eGhqd2tsbXdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI2NTc1MjgsImV4cCI6MjA1ODIzMzUyOH0.VtsXnQcWKZIdhl1YQ-uLrur5f0Xink66XxKFvIsYLCk';
+    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+    
+    // VARIABILI GLOBALI
+    let docsGlobal = [];
+    let currentSort = { key: null, direction: -1 }; // Ordinamento discendente per data
+    let strutturaData = null; // Caricato da struttura.json
+    
+    // Totali di riferimento (personalizza se necessario)
+    const totalQuestionari = 30;
+    const totalVicariati = 7;
+    const totalComunità = 38;
+    
+    // Soglia per considerare un questionario "compilato"
+    // Ad esempio, se la percentuale supera il 50% lo consideriamo compilato.
+    const completionThreshold = 50;
+    
+    // FUNZIONI UTILITY
+    function generateUUID() {
+      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+        const r = (Math.random() * 16) | 0;
+        const v = c === "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      });
+    }
+    
+    function downloadJSON() {
+      const data = JSON.stringify(docsGlobal, null, 4);
+      const blob = new Blob([data], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "backup_questionari.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+    
+    function parseItalianDateTime(localStr) {
+      const parts = localStr.split(/[\/\s:]+/);
+      if (parts.length >= 5) {
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const year = parseInt(parts[2], 10);
+        const hour = parseInt(parts[3], 10);
+        const min = parseInt(parts[4], 10);
+        return new Date(year, month, day, hour, min);
+      }
+      return null;
+    }
+    
+    /**
+     * isTableRowFilled: Determina se una riga di una tabella è effettivamente compilata.
+     * Ignora le chiavi che sono autopopolate (es. "ID_Parrocchia", "Nome_Parrocchia", ecc.).
+     */
+    function isTableRowFilled(row) {
+      const ignoreKeys = ["ID_Parrocchia", "Nome_Parrocchia", "ID_Vicariato", "ID_Comunità"];
+      for (const key in row) {
+        if (!ignoreKeys.includes(key)) {
+          const val = row[key];
+          if (typeof val === "string" && val.trim() !== "") return true;
+          if (typeof val === "boolean" && val === true) return true;
+          if (typeof val === "number" && val !== 0) return true;
+        }
+      }
+      return false;
+    }
+    
+    /**
+     * calculateCompletionSerious: Attraversa ricorsivamente tutti i nodi e sottonodi
+     * della sezione standard (s) e li confronta con i dati del questionario (q).
+     * Per ogni campo compilabile:
+     * - Se è un campo con "value": se lo standard è vuoto, il campo è compilato se q è non vuoto;
+     *   se lo standard ha un valore, il campo è compilato se q è diverso dallo standard.
+     * - Se è un campo di tipo "table": il campo è compilato se almeno una riga (ignorando le colonne
+     *   non editabili) è effettivamente compilata.
+     * Ritorna la percentuale (intera) di campi compilati.
+     */
+    function calculateCompletionSerious(q, s) {
+      let totalFields = 0;
+      let filledFields = 0;
+      
+      function recurse(standardObj, questionObj) {
+        Object.keys(standardObj).forEach(key => {
+          const sVal = standardObj[key];
+          // Se il nodo standard rappresenta un campo editabile
+          if (sVal && typeof sVal === 'object' && (sVal.hasOwnProperty('value') || sVal.input_type === "table")) {
+            totalFields++;
+            if (sVal.input_type === "table") {
+              // Per le tabelle, controlliamo se esiste almeno una riga compilata
+              if (questionObj && questionObj[key] && Array.isArray(questionObj[key].rows)) {
+                const hasFilledRow = questionObj[key].rows.some(row => isTableRowFilled(row));
+                if (hasFilledRow) filledFields++;
+              }
+            } else {
+              // Campo con "value"
+              const qVal = questionObj && questionObj[key] ? questionObj[key].toString().trim() : "";
+              const sStdVal = sVal.value.toString().trim();
+              if (sStdVal === "") {
+                if (qVal !== "") filledFields++;
+              } else {
+                if (qVal !== "" && qVal !== sStdVal) filledFields++;
+              }
+            }
+          } else if (sVal && typeof sVal === 'object') {
+            // Se il nodo non è un campo diretto, ricorriamo
+            const qChild = questionObj ? questionObj[key] : undefined;
+            recurse(sVal, qChild);
+          }
+        });
+      }
+      
+      recurse(s, q);
+      return totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
+    }
+    
+    /**
+     * In base al valore calcolato, aggiunge una classificazione visiva:
+     * ad esempio, se la percentuale supera la soglia, lo consideriamo "Compilato"
+     * altrimenti "Non compilato".
+     */
+    function classifyCompletion(percentage) {
+      return percentage >= completionThreshold ? "Compilato" : "Non compilato";
+    }
+    
+    function updateIndicator() {
+      const numQuestionari = docsGlobal.length;
+      const vicariatiSet = new Set();
+      docsGlobal.forEach(q => {
+        const vic = q?.informazioni_compilazione?.vicariato;
+        if (vic) vicariatiSet.add(vic);
+      });
+      const numVicariati = vicariatiSet.size;
+      const indicatorHTML = `
+        <div>Questionari: ${numQuestionari} / ${totalQuestionari}</div>
+        <div>Vicariati coperti: ${numVicariati} / ${totalVicariati}</div>
+        <div>Comunità pastorali: ${numQuestionari} / ${totalComunità}</div>
+      `;
+      document.getElementById("dataIndicator").innerHTML = indicatorHTML;
+    }
+    
+    async function buildTable() {
+      try {
+        const { data, error } = await supabaseClient
+          .from('raw_questionari')
+          .select('data');
+        if (error) {
+          console.error("Errore nel caricamento dei questionari:", error);
+        } else {
+          docsGlobal = data.map(record => record.data);
+          updateIndicator();
+          // Ordina in modo discendente per Data Ultima Modifica
+          currentSort = { key: 'datatime_ultima_modifica', direction: -1 };
+          sortAndRenderTable();
+        }
+      } catch (err) {
+        console.error("Errore nel caricamento dei questionari:", err);
+      }
+    }
+    
+    function sortAndRenderTable() {
+      let sortedDocs = docsGlobal.slice();
+      if (currentSort.key) {
+        sortedDocs.sort((a, b) => {
+          const aVal = getNestedValue(a, currentSort.key);
+          const bVal = getNestedValue(b, currentSort.key);
+          if (aVal < bVal) return -1 * currentSort.direction;
+          if (aVal > bVal) return 1 * currentSort.direction;
+          return 0;
+        });
+      } else {
+        sortedDocs.sort((a, b) => {
+          const vicA = a?.informazioni_compilazione?.vicariato || "";
+          const vicB = b?.informazioni_compilazione?.vicariato || "";
+          return String(vicA).localeCompare(String(vicB));
+        });
+      }
+      renderTable(sortedDocs);
+      applyColumnFilters();
+    }
+    
+    function getNestedValue(obj, keyPath) {
+      const keys = keyPath.split('.');
+      let value = obj;
+      keys.forEach(key => {
+        value = value ? value[key] : "";
+      });
+      return value || "";
+    }
+    
+    function renderTable(docs) {
+      const tbody = document.querySelector("#questionariTable tbody");
+      tbody.innerHTML = "";
+      docs.forEach(q => {
+        const tr = document.createElement("tr");
+        
+        // Colonna Status
+        const tdStatus = document.createElement("td");
+        const status = q?.status_record || "";
+        const commentiRevisore = q?.commenti_revisore || "";
+        tdStatus.innerHTML = getStatusIcon(status, commentiRevisore);
+        const isLockedByOther = q?.allocated && (q.allocated !== localStorage.getItem('myLockId'));
+        if (isLockedByOther) {
+          const lockIcon = document.createElement("span");
+          lockIcon.innerHTML = "&#128274;";
+          lockIcon.title = "Record bloccato da un altro utente";
+          tdStatus.appendChild(document.createTextNode(" "));
+          tdStatus.appendChild(lockIcon);
+        }
+        tr.appendChild(tdStatus);
+        
+        // Colonna ID Questionario
+        const tdId = document.createElement("td");
+        tdId.textContent = q?.questionario_id || "";
+        tr.appendChild(tdId);
+        
+        // Colonna Vicariato
+        const tdVicariato = document.createElement("td");
+        tdVicariato.textContent = q?.informazioni_compilazione?.vicariato || "";
+        tr.appendChild(tdVicariato);
+        
+        // Colonna Comunità Pastorale
+        const tdComunita = document.createElement("td");
+        tdComunita.textContent = q?.informazioni_compilazione?.["comunità_pastorale"] || "";
+        tr.appendChild(tdComunita);
+        
+        // Colonna Parrocchie
+        const tdParrocchie = document.createElement("td");
+        let parrocchieText = "";
+        if (q?.informazioni_compilazione?.parrocchie?.rows?.length) {
+          parrocchieText = q.informazioni_compilazione.parrocchie.rows
+            .map(r => r.Nome_Parrocchia)
+            .join(", ");
+        }
+        tdParrocchie.textContent = parrocchieText;
+        tr.appendChild(tdParrocchie);
+        
+        // Colonna Studente Compilatore
+        const tdStudente = document.createElement("td");
+        tdStudente.textContent = q?.studente_compilatore || "";
+        tr.appendChild(tdStudente);
+        
+        // Colonna Data Ultima Modifica
+        const tdData = document.createElement("td");
+        const dateStr = q?.datatime_ultima_modifica || "";
+        if (dateStr) {
+          let dateObj = new Date(dateStr);
+          const options = {
+            timeZone: "Europe/Rome",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit"
+          };
+          if (isNaN(dateObj.getTime())) {
+            dateObj = parseItalianDateTime(dateStr);
+          }
+          tdData.textContent = (dateObj && !isNaN(dateObj.getTime())) ? dateObj.toLocaleString("it-IT", options) : "Data non valida";
+        }
+        tr.appendChild(tdData);
+        
+        // Colonna Completamento
+        const tdCompletion = document.createElement("td");
+        let completionPercent = 0;
+        if (strutturaData && q?.informazioni_compilazione) {
+          completionPercent = calculateCompletionSerious(q.informazioni_compilazione, strutturaData.informazioni_compilazione);
+        }
+        // Classifichiamo in base alla soglia impostata
+        const classification = classifyCompletion(completionPercent);
+        tdCompletion.textContent = completionPercent + '% (' + classification + ')';
+        tr.appendChild(tdCompletion);
+        
+        // Colonna Azioni
+        const tdAzioni = document.createElement("td");
+        const btnVisualizza = document.createElement("button");
+        btnVisualizza.classList.add("icon-button");
+        btnVisualizza.innerHTML = "&#128065;";
+        btnVisualizza.title = "Visualizza questionario";
+        btnVisualizza.onclick = () => {
+          if (q) {
+            window.location.href = "page.html?mode=view&id=" + encodeURIComponent(q.questionario_id);
+          }
+        };
+        tdAzioni.appendChild(btnVisualizza);
+        const btnModifica = document.createElement("button");
+        btnModifica.classList.add("icon-button");
+        btnModifica.innerHTML = "&#9998;";
+        btnModifica.title = "Modifica questionario";
+        if (isLockedByOther) {
+          btnModifica.disabled = true;
+          btnModifica.style.opacity = 0.5;
+          btnModifica.onclick = () => { showLockModal(); };
+        } else {
+          btnModifica.onclick = () => {
+            if (q) {
+              window.location.href = "page.html?mode=edit&id=" + encodeURIComponent(q.questionario_id);
+            }
+          };
+        }
+        tdAzioni.appendChild(btnModifica);
+        tr.appendChild(tdAzioni);
+        
+        tbody.appendChild(tr);
+      });
+    }
+    
+    function getStatusIcon(status, commenti) {
+      let iconHtml = "";
+      const statusLower = String(status).toLowerCase();
+      if (statusLower === "inviato") {
+        iconHtml = '<span class="status-icon" style="background-color: #3498db;" title="Inviato">✉️</span>';
+      } else if (statusLower === "respinto") {
+        iconHtml = `<span class="status-icon" style="background-color: red; cursor: pointer;" title="Respinto" onclick="showCommentiRevisore('${(commenti || "").replace(/'/g, "\\'")}')">❌</span>`;
+      } else if (statusLower === "da verificare") {
+        iconHtml = '<span class="status-icon" style="background-color: green;" title="Da Verificare">🧐</span>';
+      } else if (statusLower === "accettato") {
+        iconHtml = '<span class="status-icon" style="background-color: green;" title="Accettato">✅</span>';
+      } else {
+        iconHtml = '<span class="status-icon" style="background-color: gray;" title="Sconosciuto">?</span>';
+      }
+      return iconHtml;
+    }
+    
+    function applyColumnFilters() {
+      const filters = document.querySelectorAll(".column-filter");
+      const tbody = document.querySelector("#questionariTable tbody");
+      const rows = tbody.querySelectorAll("tr");
+      rows.forEach(row => {
+        let showRow = true;
+        filters.forEach(filter => {
+          const colIndex = filter.getAttribute("data-col-index");
+          const cellText = row.cells[colIndex].textContent.toLowerCase();
+          const filterValue = filter.value.toLowerCase();
+          if (filterValue && !cellText.includes(filterValue)) {
+            showRow = false;
+          }
+        });
+        row.style.display = showRow ? "" : "none";
+      });
+    }
+    
+    document.querySelectorAll(".column-filter").forEach(input => {
+      input.addEventListener("input", applyColumnFilters);
+    });
+    
+    document.querySelectorAll("#questionariTable th[data-key]").forEach(th => {
+      th.addEventListener("click", function() {
+        const key = this.getAttribute("data-key");
+        if (currentSort.key === key) {
+          currentSort.direction = -currentSort.direction;
+        } else {
+          currentSort.key = key;
+          currentSort.direction = 1;
+        }
+        sortAndRenderTable();
+      });
+    });
+    
+    document.getElementById("newQuestionarioBtn").addEventListener("click", () => {
+      window.location.href = "page.html?mode=new";
+    });
+    
+    function showLockModal() {
+      alert("Questo questionario è attualmente in uso da un altro utente.");
+    }
+    
+    function showCommentiRevisore(commenti) {
+      const modal = document.getElementById("commentiModal");
+      const textEl = document.getElementById("commentiModalText");
+      textEl.textContent = commenti;
+      modal.style.display = "block";
+    }
+    
+    function closeCommentiModal() {
+      document.getElementById("commentiModal").style.display = "none";
+    }
+    
+    // INIZIALIZZAZIONE: Carica struttura.json e poi i questionari
+    fetch('struttura.json')
+      .then(response => response.json())
+      .then(data => {
+        strutturaData = data;
+        buildTable();
+      })
+      .catch(error => {
+        console.error("Errore nel caricamento di struttura.json:", error);
+        buildTable();
+      });
+  </script>
+</body>
+</html>
