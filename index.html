@@ -237,8 +237,8 @@
       }
       currentUserRole = data.role;
       console.log("Ruolo utente:", currentUserRole);
-      // Se il ruolo è "reviewer" nascondi i pulsanti di aggiunta e download
-      if (currentUserRole === 'reviewer') {
+      // Se il ruolo è "reviewer" o "analyst", nascondi i pulsanti di aggiunta e download
+      if (currentUserRole === 'reviewer' || currentUserRole === 'analyst') {
         const newQBtn = document.getElementById('newQuestionarioBtn');
         const downloadBtn = document.getElementById('downloadJsonBtn');
         if(newQBtn) newQBtn.style.display = 'none';
@@ -293,6 +293,23 @@
     document.addEventListener('DOMContentLoaded', () => {
       checkSession();
       setupAutoLogout(15);
+      // Aggiungo event listener per l'ordinamento cliccando sulle intestazioni
+      document.querySelectorAll('th[data-key]').forEach(th => {
+        th.addEventListener('click', () => {
+          const key = th.getAttribute('data-key');
+          if (currentSort.key === key) {
+            currentSort.direction = -currentSort.direction;
+          } else {
+            currentSort.key = key;
+            currentSort.direction = 1; // ordine ascendente
+          }
+          sortAndRenderTable();
+        });
+      });
+      // Aggiungo event listener per i filtri di colonna
+      document.querySelectorAll('.column-filter').forEach(input => {
+        input.addEventListener('input', applyColumnFilters);
+      });
     });
 
     const loginForm = document.getElementById('login-form');
@@ -349,6 +366,7 @@
         } else {
           docsGlobal = data.map(record => record.data);
           updateIndicator();
+          // Imposta l'ordinamento iniziale
           currentSort = { key: 'datatime_ultima_modifica', direction: -1 };
           sortAndRenderTable();
         }
@@ -456,8 +474,8 @@
         };
         tdAzioni.appendChild(btnVisualizza);
 
-        // Bottone Modifica: aggiunto solo se l'utente non è reviewer
-        if (currentUserRole !== 'reviewer') {
+        // Bottone Modifica: viene aggiunto solo se l'utente non è reviewer o analyst
+        if (currentUserRole !== 'reviewer' && currentUserRole !== 'analyst') {
           const btnModifica = document.createElement("button");
           btnModifica.classList.add("icon-button");
           btnModifica.innerHTML = "&#9998;";
@@ -524,9 +542,32 @@
     function showLockModal() {
       alert("Questo record è bloccato da un altro utente.");
     }
+
+    /****************************************************
+     * FILTRI DI COLONNA
+     ****************************************************/
     function applyColumnFilters() {
-      // Implementa la logica di filtro se necessario
+      const filters = document.querySelectorAll('.column-filter');
+      const rows = document.querySelectorAll('#questionariTable tbody tr');
+      rows.forEach(row => {
+        let showRow = true;
+        filters.forEach(filter => {
+          const colIndex = filter.getAttribute('data-col-index');
+          const filterValue = filter.value.trim().toLowerCase();
+          if (filterValue !== "") {
+            const cell = row.cells[colIndex];
+            if (cell) {
+              const cellText = cell.textContent.toLowerCase();
+              if (!cellText.includes(filterValue)) {
+                showRow = false;
+              }
+            }
+          }
+        });
+        row.style.display = showRow ? "" : "none";
+      });
     }
+
     // Funzione placeholder per calcolare il completamento del questionario
     function calculateCompletionSerious(informazioni_compilazione, struttura) {
       return 75;
