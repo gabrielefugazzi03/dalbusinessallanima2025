@@ -165,14 +165,12 @@
       <table id="questionariTable" class="compact-table">
         <thead>
           <tr>
-            <th>Status</th>
             <th data-key="questionario_id">ID Questionario</th>
             <th data-key="informazioni_compilazione.vicariato">Vicariato</th>
             <th data-key="informazioni_compilazione.comunità_pastorale">Comunità Pastorale</th>
             <th data-key="informazioni_compilazione.parrocchie">Parrocchie</th>
             <th data-key="studente_compilatore">Studente Compilatore</th>
             <th data-key="datatime_ultima_modifica">Data Ultima Modifica</th>
-            <th>Completamento</th>
             <th>Azioni</th>
           </tr>
           <tr class="filter-row">
@@ -182,8 +180,6 @@
             <th><input type="text" class="column-filter" data-col-index="3" placeholder="Filtra..." /></th>
             <th><input type="text" class="column-filter" data-col-index="4" placeholder="Filtra..." /></th>
             <th><input type="text" class="column-filter" data-col-index="5" placeholder="Filtra..." /></th>
-            <th><input type="text" class="column-filter" data-col-index="6" placeholder="Filtra..." /></th>
-            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -212,9 +208,7 @@
     /****************************************************
      * VARIABILI GLOBALI
      ****************************************************/
-    // Salva il ruolo dell'utente
     let currentUserRole = null;
-    // Array per contenere i dati dei questionari
     let docsGlobal = [];
     let currentSort = { key: null, direction: -1 };
     const totalQuestionari = 30;
@@ -399,20 +393,6 @@
       docs.forEach(q => {
         const tr = document.createElement("tr");
 
-        // Colonna Status
-        const tdStatus = document.createElement("td");
-        const status = q?.status_record || "";
-        tdStatus.innerHTML = getStatusIcon(status, q?.commenti_revisore || "");
-        const isLockedByOther = q?.allocated && (q.allocated !== localStorage.getItem('myLockId'));
-        if (isLockedByOther) {
-          const lockIcon = document.createElement("span");
-          lockIcon.innerHTML = "&#128274;";
-          lockIcon.title = "Record bloccato da un altro utente";
-          tdStatus.appendChild(document.createTextNode(" "));
-          tdStatus.appendChild(lockIcon);
-        }
-        tr.appendChild(tdStatus);
-
         // ID Questionario
         const tdId = document.createElement("td");
         tdId.textContent = q?.questionario_id || "";
@@ -462,16 +442,6 @@
         }
         tr.appendChild(tdData);
 
-        // Completamento
-        const tdCompletion = document.createElement("td");
-        let completionPercent = 0;
-        if (typeof calculateCompletionSerious === 'function' && q?.informazioni_compilazione) {
-          completionPercent = calculateCompletionSerious(q.informazioni_compilazione, {}); // Inserisci struttura se disponibile
-        }
-        const classification = (completionPercent >= completionThreshold) ? "Compilato" : "Non compilato";
-        tdCompletion.textContent = completionPercent + '% (' + classification + ')';
-        tr.appendChild(tdCompletion);
-
         // Azioni
         const tdAzioni = document.createElement("td");
         // Bottone Visualizza (sempre visibile)
@@ -492,6 +462,7 @@
           btnModifica.classList.add("icon-button");
           btnModifica.innerHTML = "&#9998;";
           btnModifica.title = "Modifica questionario";
+          const isLockedByOther = q?.allocated && (q.allocated !== localStorage.getItem('myLockId'));
           if (isLockedByOther) {
             btnModifica.disabled = true;
             btnModifica.style.opacity = 0.5;
@@ -508,22 +479,6 @@
         tr.appendChild(tdAzioni);
         tbody.appendChild(tr);
       });
-    }
-
-    function getStatusIcon(status, commenti) {
-      let iconHtml = "";
-      const statusLower = String(status).toLowerCase();
-      if (statusLower === "inviato") {
-        iconHtml = '<span class="status-icon" style="background-color: #3498db;" title="Inviato">✉️</span>';
-      } else if (statusLower === "respinto") {
-        iconHtml = '<span class="status-icon" style="background-color: #e74c3c;" title="Respinto">❌</span>';
-      } else {
-        iconHtml = '<span class="status-icon" style="background-color: #95a5a6;" title="In lavorazione">⏳</span>';
-      }
-      if (commenti) {
-        iconHtml += ' <button class="icon-button" onclick="openCommentiModal(\'' + encodeURIComponent(commenti) + '\')">💬</button>';
-      }
-      return iconHtml;
     }
 
     function updateIndicator() {
@@ -574,7 +529,6 @@
     }
     // Funzione placeholder per calcolare il completamento del questionario
     function calculateCompletionSerious(informazioni_compilazione, struttura) {
-      // Implementa la logica per calcolare il completamento, ad esempio:
       return 75;
     }
   </script>
