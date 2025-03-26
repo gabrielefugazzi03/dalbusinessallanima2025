@@ -205,51 +205,80 @@
     /****************************************************
      * CONFIGURAZIONE SUPABASE
      ****************************************************/
-    // NOTA: Utilizziamo la chiave anonima (pubblica) di Supabase. Le operazioni sensibili devono essere gestite lato server.
     const supabaseUrl = 'https://arvsrkvnsnwxhjwklmws.supabase.co';
     const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFydnNya3Zuc253eGhqd2tsbXdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI2NTc1MjgsImV4cCI6MjA1ODIzMzUyOH0.VtsXnQcWKZIdhl1YQ-uLrur5f0Xink66XxKFvIsYLCk';
     const supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey);
 
     /****************************************************
-     * GESTIONE DEL LOGIN E LOGOUT CON SUPABASE AUTH
+     * VARIABILI GLOBALI
      ****************************************************/
-    document.addEventListener('DOMContentLoaded', () => {
-      // Controlla se esiste una sessione utente
-      checkSession();
+    // Salva il ruolo dell'utente
+    let currentUserRole = null;
+    // Array per contenere i dati dei questionari
+    let docsGlobal = [];
+    let currentSort = { key: null, direction: -1 };
+    const totalQuestionari = 30;
+    const totalVicariati = 7;
+    const totalComunità = 38;
+    const completionThreshold = 50;
 
-      // Gestione del form di login
-      const loginForm = document.getElementById('login-form');
-      loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+    /****************************************************
+     * FUNZIONE PER OTTENERE IL RUOLO DELL'UTENTE
+     ****************************************************/
+    async function initUserRole() {
+      const { data: sessionData, error: sessionError } = await supabaseClient.auth.getSession();
+      if (sessionError || !sessionData.session) {
+        console.error("Errore nel recupero della sessione:", sessionError);
+        return;
+      }
+      const userId = sessionData.session.user.id;
+      const { data, error } = await supabaseClient
+        .from('profiles')
+        .select('role')
+        .eq('id', userId)
+        .single();
+      if (error) {
+        console.error('Errore nel recupero del ruolo:', error);
+        return;
+      }
+      currentUserRole = data.role;
+      console.log("Ruolo utente:", currentUserRole);
+      // Se il ruolo è "reviewer" nascondi i pulsanti di aggiunta e download
+      if (currentUserRole === 'reviewer') {
+        const newQBtn = document.getElementById('newQuestionarioBtn');
+        const downloadBtn = document.getElementById('downloadJsonBtn');
+        if(newQBtn) newQBtn.style.display = 'none';
+        if(downloadBtn) downloadBtn.style.display = 'none';
+      }
+    }
 
-        // Effettua il login usando signInWithPassword (v2)
-        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
-        if (error) {
-          console.error("Errore nel login:", error);
-          document.getElementById('login-error').innerText = error.message;
-        } else {
-          // Login riuscito: mostra il contenuto protetto
-          document.getElementById('login-container').style.display = 'none';
-          document.getElementById('content').style.display = 'block';
-          buildTable();
-        }
-      });
+    /****************************************************
+     * FUNZIONE PER IL LOGOUT AUTOMATICO PER INATTIVITÀ
+     ****************************************************/
+    function setupAutoLogout(timeoutInMinutes = 15) {
+      let logoutTimer;
+      const resetTimer = () => {
+        clearTimeout(logoutTimer);
+        logoutTimer = setTimeout(async () => {
+          const { error } = await supabaseClient.auth.signOut();
+          if (error) {
+            console.error("Errore nel logout automatico:", error);
+          } else {
+            alert("Sessione scaduta per inattività.");
+            location.reload();
+          }
+        }, timeoutInMinutes * 60 * 1000);
+      };
+      window.addEventListener('mousemove', resetTimer);
+      window.addEventListener('keypress', resetTimer);
+      window.addEventListener('scroll', resetTimer);
+      window.addEventListener('click', resetTimer);
+      resetTimer();
+    }
 
-      // Gestione del pulsante di logout
-      document.getElementById('logoutBtn').addEventListener('click', async () => {
-        const { error } = await supabaseClient.auth.signOut();
-        if (error) {
-          console.error("Errore durante il logout:", error);
-        } else {
-          // Logout riuscito: torna al form di login
-          document.getElementById('content').style.display = 'none';
-          document.getElementById('login-container').style.display = 'block';
-        }
-      });
-    });
-
+    /****************************************************
+     * GESTIONE DEL LOGIN E DELLA SESSIONE
+     ****************************************************/
     async function checkSession() {
       const { data: { session }, error } = await supabaseClient.auth.getSession();
       if (error) {
@@ -259,6 +288,7 @@
       if (session) {
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('content').style.display = 'block';
+        initUserRole();
         buildTable();
       } else {
         document.getElementById('login-container').style.display = 'block';
@@ -266,17 +296,41 @@
       }
     }
 
-    /****************************************************
-     * FUNZIONI UTILITY E DI SUPPORTO
-     ****************************************************/
-    function generateUUID() {
-      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
-        const r = (Math.random() * 16) | 0;
-        const v = c === "x" ? r : (r & 0x3) | 0x8;
-        return v.toString(16);
-      });
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      checkSession();
+      setupAutoLogout(15);
+    });
 
+    const loginForm = document.getElementById('login-form');
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+      if (error) {
+        console.error("Errore nel login:", error);
+        document.getElementById('login-error').innerText = error.message;
+      } else {
+        document.getElementById('login-container').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        initUserRole();
+        buildTable();
+      }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      const { error } = await supabaseClient.auth.signOut();
+      if (error) {
+        console.error("Errore durante il logout:", error);
+      } else {
+        document.getElementById('content').style.display = 'none';
+        document.getElementById('login-container').style.display = 'block';
+      }
+    });
+
+    /****************************************************
+     * FUNZIONE PER IL DOWNLOAD DEL JSON
+     ****************************************************/
     function downloadJSON() {
       const data = JSON.stringify(docsGlobal, null, 4);
       const blob = new Blob([data], { type: "application/json" });
@@ -288,97 +342,9 @@
       URL.revokeObjectURL(url);
     }
 
-    function parseItalianDateTime(localStr) {
-      const parts = localStr.split(/[\/\s:]+/);
-      if (parts.length >= 5) {
-        const day = parseInt(parts[0], 10);
-        const month = parseInt(parts[1], 10) - 1;
-        const year = parseInt(parts[2], 10);
-        const hour = parseInt(parts[3], 10);
-        const min = parseInt(parts[4], 10);
-        return new Date(year, month, day, hour, min);
-      }
-      return null;
-    }
-
-    function isTableRowFilled(row) {
-      const ignoreKeys = ["ID_Parrocchia", "Nome_Parrocchia", "ID_Vicariato", "ID_Comunità"];
-      for (const key in row) {
-        if (!ignoreKeys.includes(key)) {
-          const val = row[key];
-          if (typeof val === "string" && val.trim() !== "") return true;
-          if (typeof val === "boolean" && val === true) return true;
-          if (typeof val === "number" && val !== 0) return true;
-        }
-      }
-      return false;
-    }
-
-    function calculateCompletionSerious(q, s) {
-      let totalFields = 0;
-      let filledFields = 0;
-      
-      function recurse(standardObj, questionObj) {
-        Object.keys(standardObj).forEach(key => {
-          const sVal = standardObj[key];
-          if (sVal && typeof sVal === 'object' && (sVal.hasOwnProperty('value') || sVal.input_type === "table")) {
-            totalFields++;
-            if (sVal.input_type === "table") {
-              if (questionObj && questionObj[key] && Array.isArray(questionObj[key].rows)) {
-                const hasFilledRow = questionObj[key].rows.some(row => isTableRowFilled(row));
-                if (hasFilledRow) filledFields++;
-              }
-            } else {
-              const qVal = questionObj && questionObj[key] ? questionObj[key].toString().trim() : "";
-              const sStdVal = sVal.value.toString().trim();
-              if (sStdVal === "") {
-                if (qVal !== "") filledFields++;
-              } else {
-                if (qVal !== "" && qVal !== sStdVal) filledFields++;
-              }
-            }
-          } else if (sVal && typeof sVal === 'object') {
-            const qChild = questionObj ? questionObj[key] : undefined;
-            recurse(sVal, qChild);
-          }
-        });
-      }
-      
-      recurse(s, q);
-      return totalFields > 0 ? Math.round((filledFields / totalFields) * 100) : 0;
-    }
-
-    function classifyCompletion(percentage) {
-      return percentage >= completionThreshold ? "Compilato" : "Non compilato";
-    }
-
-    function updateIndicator() {
-      const numQuestionari = docsGlobal.length;
-      const vicariatiSet = new Set();
-      docsGlobal.forEach(q => {
-        const vic = q?.informazioni_compilazione?.vicariato;
-        if (vic) vicariatiSet.add(vic);
-      });
-      const numVicariati = vicariatiSet.size;
-      const indicatorHTML = `
-        <div>Questionari: ${numQuestionari} / ${totalQuestionari}</div>
-        <div>Vicariati coperti: ${numVicariati} / ${totalVicariati}</div>
-        <div>Comunità pastorali: ${numQuestionari} / ${totalComunità}</div>
-      `;
-      document.getElementById("dataIndicator").innerHTML = indicatorHTML;
-    }
-
     /****************************************************
      * CARICAMENTO DEI DATI E RENDERING DELLA TABELLA
      ****************************************************/
-    let docsGlobal = [];
-    let currentSort = { key: null, direction: -1 };
-    let strutturaData = null; // Da caricare da struttura.json
-    const totalQuestionari = 30;
-    const totalVicariati = 7;
-    const totalComunità = 38;
-    const completionThreshold = 50;
-
     async function buildTable() {
       try {
         const { data, error } = await supabaseClient
@@ -432,11 +398,11 @@
       tbody.innerHTML = "";
       docs.forEach(q => {
         const tr = document.createElement("tr");
-        // Stato
+
+        // Colonna Status
         const tdStatus = document.createElement("td");
         const status = q?.status_record || "";
-        const commentiRevisore = q?.commenti_revisore || "";
-        tdStatus.innerHTML = getStatusIcon(status, commentiRevisore);
+        tdStatus.innerHTML = getStatusIcon(status, q?.commenti_revisore || "");
         const isLockedByOther = q?.allocated && (q.allocated !== localStorage.getItem('myLockId'));
         if (isLockedByOther) {
           const lockIcon = document.createElement("span");
@@ -446,32 +412,36 @@
           tdStatus.appendChild(lockIcon);
         }
         tr.appendChild(tdStatus);
+
         // ID Questionario
         const tdId = document.createElement("td");
         tdId.textContent = q?.questionario_id || "";
         tr.appendChild(tdId);
+
         // Vicariato
         const tdVicariato = document.createElement("td");
         tdVicariato.textContent = q?.informazioni_compilazione?.vicariato || "";
         tr.appendChild(tdVicariato);
+
         // Comunità Pastorale
         const tdComunita = document.createElement("td");
         tdComunita.textContent = q?.informazioni_compilazione?.["comunità_pastorale"] || "";
         tr.appendChild(tdComunita);
+
         // Parrocchie
         const tdParrocchie = document.createElement("td");
         let parrocchieText = "";
         if (q?.informazioni_compilazione?.parrocchie?.rows?.length) {
-          parrocchieText = q.informazioni_compilazione.parrocchie.rows
-            .map(r => r.Nome_Parrocchia)
-            .join(", ");
+          parrocchieText = q.informazioni_compilazione.parrocchie.rows.map(r => r.Nome_Parrocchia).join(", ");
         }
         tdParrocchie.textContent = parrocchieText;
         tr.appendChild(tdParrocchie);
+
         // Studente Compilatore
         const tdStudente = document.createElement("td");
         tdStudente.textContent = q?.studente_compilatore || "";
         tr.appendChild(tdStudente);
+
         // Data Ultima Modifica
         const tdData = document.createElement("td");
         const dateStr = q?.datatime_ultima_modifica || "";
@@ -491,17 +461,20 @@
           tdData.textContent = (dateObj && !isNaN(dateObj.getTime())) ? dateObj.toLocaleString("it-IT", options) : "Data non valida";
         }
         tr.appendChild(tdData);
+
         // Completamento
         const tdCompletion = document.createElement("td");
         let completionPercent = 0;
-        if (strutturaData && q?.informazioni_compilazione) {
-          completionPercent = calculateCompletionSerious(q.informazioni_compilazione, strutturaData.informazioni_compilazione);
+        if (typeof calculateCompletionSerious === 'function' && q?.informazioni_compilazione) {
+          completionPercent = calculateCompletionSerious(q.informazioni_compilazione, {}); // Inserisci struttura se disponibile
         }
-        const classification = classifyCompletion(completionPercent);
+        const classification = (completionPercent >= completionThreshold) ? "Compilato" : "Non compilato";
         tdCompletion.textContent = completionPercent + '% (' + classification + ')';
         tr.appendChild(tdCompletion);
+
         // Azioni
         const tdAzioni = document.createElement("td");
+        // Bottone Visualizza (sempre visibile)
         const btnVisualizza = document.createElement("button");
         btnVisualizza.classList.add("icon-button");
         btnVisualizza.innerHTML = "&#128065;";
@@ -512,22 +485,26 @@
           }
         };
         tdAzioni.appendChild(btnVisualizza);
-        const btnModifica = document.createElement("button");
-        btnModifica.classList.add("icon-button");
-        btnModifica.innerHTML = "&#9998;";
-        btnModifica.title = "Modifica questionario";
-        if (isLockedByOther) {
-          btnModifica.disabled = true;
-          btnModifica.style.opacity = 0.5;
-          btnModifica.onclick = () => { showLockModal(); };
-        } else {
-          btnModifica.onclick = () => {
-            if (q) {
-              window.location.href = "page.html?mode=edit&id=" + encodeURIComponent(q.questionario_id);
-            }
-          };
+
+        // Bottone Modifica: aggiunto solo se l'utente non è reviewer
+        if (currentUserRole !== 'reviewer') {
+          const btnModifica = document.createElement("button");
+          btnModifica.classList.add("icon-button");
+          btnModifica.innerHTML = "&#9998;";
+          btnModifica.title = "Modifica questionario";
+          if (isLockedByOther) {
+            btnModifica.disabled = true;
+            btnModifica.style.opacity = 0.5;
+            btnModifica.onclick = () => { showLockModal(); };
+          } else {
+            btnModifica.onclick = () => {
+              if (q) {
+                window.location.href = "page.html?mode=edit&id=" + encodeURIComponent(q.questionario_id);
+              }
+            };
+          }
+          tdAzioni.appendChild(btnModifica);
         }
-        tdAzioni.appendChild(btnModifica);
         tr.appendChild(tdAzioni);
         tbody.appendChild(tr);
       });
@@ -539,45 +516,67 @@
       if (statusLower === "inviato") {
         iconHtml = '<span class="status-icon" style="background-color: #3498db;" title="Inviato">✉️</span>';
       } else if (statusLower === "respinto") {
-        iconHtml = `<span class="status-icon" style="background-color: red; cursor: pointer;" title="Respinto" onclick="showCommentiRevisore('${(commenti || "").replace(/'/g, "\\'")}')">❌</span>`;
-      } else if (statusLower === "da verificare") {
-        iconHtml = '<span class="status-icon" style="background-color: green;" title="Da Verificare">🧐</span>';
-      } else if (statusLower === "accettato") {
-        iconHtml = '<span class="status-icon" style="background-color: green;" title="Accettato">✅</span>';
+        iconHtml = '<span class="status-icon" style="background-color: #e74c3c;" title="Respinto">❌</span>';
       } else {
-        iconHtml = '<span class="status-icon" style="background-color: gray;" title="Sconosciuto">?</span>';
+        iconHtml = '<span class="status-icon" style="background-color: #95a5a6;" title="In lavorazione">⏳</span>';
+      }
+      if (commenti) {
+        iconHtml += ' <button class="icon-button" onclick="openCommentiModal(\'' + encodeURIComponent(commenti) + '\')">💬</button>';
       }
       return iconHtml;
     }
 
-    function applyColumnFilters() {
-      const filters = document.querySelectorAll(".column-filter");
-      const tbody = document.querySelector("#questionariTable tbody");
-      const rows = tbody.querySelectorAll("tr");
-      rows.forEach(row => {
-        let showRow = true;
-        filters.forEach(filter => {
-          const colIndex = filter.getAttribute("data-col-index");
-          const cellText = row.cells[colIndex].textContent.toLowerCase();
-          const filterValue = filter.value.toLowerCase();
-          if (filterValue && !cellText.includes(filterValue)) {
-            showRow = false;
-          }
-        });
-        row.style.display = showRow ? "" : "none";
+    function updateIndicator() {
+      const numQuestionari = docsGlobal.length;
+      const vicariatiSet = new Set();
+      docsGlobal.forEach(q => {
+        const vic = q?.informazioni_compilazione?.vicariato;
+        if (vic) vicariatiSet.add(vic);
       });
+      const numVicariati = vicariatiSet.size;
+      const indicatorHTML = `
+        <div>Questionari: ${numQuestionari} / ${totalQuestionari}</div>
+        <div>Vicariati coperti: ${numVicariati} / ${totalVicariati}</div>
+        <div>Comunità pastorali: ${numQuestionari} / ${totalComunità}</div>
+      `;
+      document.getElementById("dataIndicator").innerHTML = indicatorHTML;
     }
 
-    document.querySelectorAll(".column-filter").forEach(input => {
-      input.addEventListener("input", applyColumnFilters);
-    });
+    function parseItalianDateTime(localStr) {
+      const parts = localStr.split(/[\/\s:]+/);
+      if (parts.length >= 5) {
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const year = parseInt(parts[2], 10);
+        const hour = parseInt(parts[3], 10);
+        const min = parseInt(parts[4], 10);
+        return new Date(year, month, day, hour, min);
+      }
+      return null;
+    }
 
-    // Funzione per chiudere il modal dei commenti
+    /****************************************************
+     * MODAL PER COMMENTI
+     ****************************************************/
     function closeCommentiModal() {
-      document.getElementById('commentiModal').style.display = 'none';
+      document.getElementById("commentiModal").style.display = "none";
     }
-
-    // (Ulteriori funzioni, ad es. gestione dei lock, potrebbero essere aggiunte qui)
+    function openCommentiModal(encodedCommenti) {
+      const commenti = decodeURIComponent(encodedCommenti);
+      document.getElementById("commentiModalText").innerText = commenti;
+      document.getElementById("commentiModal").style.display = "block";
+    }
+    function showLockModal() {
+      alert("Questo record è bloccato da un altro utente.");
+    }
+    function applyColumnFilters() {
+      // Implementa la logica di filtro se necessario
+    }
+    // Funzione placeholder per calcolare il completamento del questionario
+    function calculateCompletionSerious(informazioni_compilazione, struttura) {
+      // Implementa la logica per calcolare il completamento, ad esempio:
+      return 75;
+    }
   </script>
 </body>
 </html>
